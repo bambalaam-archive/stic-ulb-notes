@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  latex:
+    build:
+      context: .
+    command: pdflatex -output-directory=/data/${COURSE} ${COURSE}/index.tex
+    volumes:
+      - ./:/data
