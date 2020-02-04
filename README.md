@@ -35,6 +35,8 @@ If you're a cool person and you use Rofi, executing `./choose_course.sh`
 allows you to pick and choose the course directory, instead of editing the
 `.env` file.
 
+![Rofi example](https://i.imgur.com/ytph7bR.png)
+
 ## Credit
 
 The LaTeX structure (preamble, headers, `lecture` command, and others) are
