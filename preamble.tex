@@ -1,5 +1,17 @@
-\documentclass[a4paper]{article}
+\documentclass[french]{article}
 \usepackage[utf8]{inputenc}
+% \usepackage[T1]{fontenc}
+\usepackage{babel}
+\usepackage{graphicx}
+
+\usepackage{geometry}
+\geometry{
+    a4paper,
+    left=30mm,
+    right=35mm,
+    top=30mm,
+    bottom=25mm,
+}
 
 \author{André Madeira Cortes}
 \date{2019-2020}
@@ -12,25 +24,17 @@
 }
 
 \def\@lecture{}%
-\newcommand{\lecture}[3]{
-    \ifthenelse{\isempty{#3}}{%
-        \def\@lecture{Cours #1}%
-    }{%
-        \def\@lecture{Cours #1: #3}%
-    }%
-    \subsection*{\@lecture}
-    \marginpar{\small\textsf{\mbox{#2}}}
+\newcommand{\lecture}[2]{
+    \def\@lecture{\textsf{Cours #1} - \textsf{\mbox{#2}}}%
 }
 
 % Fancy headers
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 
-\fancyhead[RO,LE]{\@lecture} % Right odd,  Left even
-\fancyhead[RE,LO]{}          % Right even, Left odd
-
-\fancyfoot[RO,LE]{\thepage}  % Right odd,  Left even
-\fancyfoot[RE,LO]{}          % Right even, Left odd
-\fancyfoot[C]{\leftmark}     % Center
+\fancyhead[R]{\@lecture} % Right odd,  Left even
+\fancyfoot[C]{}          % Center
+\rfoot{\thepage}
+\renewcommand{\footrulewidth}{1pt}
 
 \makeatother
