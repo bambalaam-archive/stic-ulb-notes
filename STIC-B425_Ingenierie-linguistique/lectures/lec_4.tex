@@ -1,0 +1,101 @@
+\lecture{4}{vendredi 21 février 2020}
+\vspace{-1.2cm}
+
+\subsection{Les systèmes de TA neuronaux (NMT)}
+
+Dernière génération des systèmes de TA
+
+2016: GT lance le 1er sys neuronal sur le web
+2017: DeepL
+Aujourd'hui: presque tous les systèmes sur internet sont neuronaux sauf Yandex (hybride SMT/NMT) et Apertium (RBMT)
+2019: Reverso (Reverso Corporate)
+
+Plateforme open source
+OpenNMT
+
+Plateforme commerciale
+Custom Translator (Microsoft)
+
+Performance
+Study by Google in 2017
+
+Il faut garder un oeil critique sur les études de performance, surtout celles venant de l'industrie
+
+NMT - Caractéristiques
+- Apprentissage profond ("deep learning")
+- Ne reste plus au niveau des mots, mais représente le sens des mots/phrases avec des plongements (embeddings)
+
+Résultat
+- Beaucoup plus de généralisations
+- Traduit sur base du sens, plus une traduction fragmentée
+
+Plongement lexical
+    Représentation numérique distribuée
+    Distribuée : chaque mot est situé par rapport aux autres dans un espace multidimensionnel sur base de sa distribution dans le corpus
+
+Hypothèse distributionnelle
+    L. Wittgenstein (1889-1951)
+        Le sens d’un mot vient de son usage
+    «You shall know a word by the company it keeps»
+        Firth (1890-1960)
+    Si deux mots apparaissent dans le même contexte, ils ont le même sens (Harris, 58)
+
+Plongement lexical
+    Représentation numérique distribuée
+    Numérique : vecteur, liste de chiffres, 1 point dans l’espace
+    Représentation vectorielle, un mot = un vecteur (une liste de chiffres dans l'espace)
+
+Vecteurs denses (???where is the slide???)
+
+Relations sémantiques
+    Plongements encodent les relation sémantiques
+    Même distance pour les mêmes relations
+
+Opérations sur les mots
+    Semantic Arithmetics
+    VS
+    Composition de vecteurs
+
+Examples:
+    Word2Vec (python)
+    WV Demo
+
+Deux étapes dans la traduction neuronale
+    1er - Encodage
+        Un réseau de neurones
+        Lit les mots un par un (les vecteurs un par un)
+        Construit la représentation de la phrase (représentation des mots dans le contexte)
+    2eme - Décodage
+        Un autre réseau de neurones
+        Génére les mots cible un à un
+        Cherche la prob, étant donné le plongement de la phrase en anglais, d'avoir le premier mot de la phrase en espagnol en ayant le plongement en anglais $P( X_{word} | embeddings)$
+
+NMT vs SMT: Architecture
+    Similaire à la représentation vue précédemment dans le cours
+    Triangle de ???
+
+SMT vS NMT: Qualité
+    Traduction beaucoup plus fluide
+        -Moins de fautes grammaticales (car il ne s'agit pas d'une traduction par segment)
+        -Plus de fautes sémantiques
+            - Les erreurs sont sémantiques motivées ("cappucino à la place de expresso")
+        -Plus d'omissions mais moins de non-sens
+        -Galère avec les Mots inconnus
+
+Challenges
+    Phrases longues
+    Mots rares ou inconnus
+    Taille des données
+
+Limites informatiques
+    Demande beaucoup de textes
+    Demande des mémoires particulières (GPU, graphic processing unit)
+
+TP: SMT ou NMT?
+    01: First one is SMT because it kept the unknown word the same
+    02: Reformulation de la phrase dans NMT, Statistique garde l'ordre des mots. Fluide mais l'apparition du féminin ne fait pas de sens.
+    04: Again, traduction of unknown word in NMT. SMT broke and translated wrongly the end of the sentence.
+    05: NMT translated strangely "héritée" and "anticipée".
+    09: NMT didn't know the word so it says "entity" (lol)
+    14: ABOUT USING -> SUR UTILISANT HAHAHA
+    17:

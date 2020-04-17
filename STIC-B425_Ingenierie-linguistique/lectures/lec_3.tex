@@ -1,0 +1,114 @@
+\lecture{3}{samedi 08 février 2020}
+\vspace{-1.2cm}
+
+\section{Systèmes fondés sur les corpus}
+\label{sec:corpus}
+
+Apprennent les connaissances à partir des corpus ("data-driven")
+
+- Connaissances probabilistes
+- SMT (statistiques)
+    - Restent au niveau de mots
+    - Apprennent des mots + associations entre mots
+- NMT (neuronaux)
+    - Représentent la sémantique du mot
+
+
+Idée corpus vs règles
+Pionniers:
+
+Nagao (1984)
+    Les traducteurs ne ferraient pas une traduction complète de la phrase source. Il propose la base de l'approche statistique. Décomposer la phrase source en segments, puis on traduit les différents segments. À la phase on recompose ces différents segments pour reconstruire la phrase.
+Isabelle (1992)
+    Les traductions existantes (corpus) contiennent plus de solutions à des problèmes de traduction que n'importe quelle autre ressource (e.g. des dictionnaires).
+
+
+\subsection{SMT}
+
+Historique:
+    - Première technologie envisagée (c.f Weaver)
+    - 1990: premier article à IBM (Brown)
+    - 2006: Google lance le premier système SMT, Google Translate
+    - 2007: Plateforme open-source "Moses" (EuroMatrix) pour développer des systèmes SMT (sous la direction de Koehn)
+    - État de l'art jusqu'en 2016
+
+2 générations de SMT
+    - TA statistique par mots (word-based machine translation)
+    - TA statistique par segments (phrase-based machine translation)
+
+Objectif SMT
+    -Trouver pour une phrase Source la phrase Target qui a la plus grande probabilité d'être la traduction de la phrase S
+
+``The target turn''
+    - Choisir la bonne solution en Langue Cible, plutôt que d'analyser la Langue Source
+
+Fonctionnement SMT
+    Entrainement
+        Corpus Parallèles (bilingues) et Corpus monolingue de la langue cible
+        Analyses statistiques
+        On extrait les mots et les associations bilingues/monolingues qui se trouvent dans les corpus, avec leurs fréquences
+        On mets tout ça dans des modèles de traduction/langage.
+        Modèle de traduction: fidélité. Regarde si phrase cible est bonne traduction à partir des mots source.
+        Modèle de langage: Regarde si la phrase cible est fluide. ``qui se lit bien en langue cible''
+        On décompose le problème de traduction en deux tâches.
+    Décodage
+        fidélité X fluidité
+        On trouve le meilleur score qui soit un compromis entre ces deux concepts.
+        Il y a plusieurs modèles statistiques: certains mettent le même poids aux deux modèles, d'autres apporteront plus de poids à l'un d'eux.
+
+Traduction (noisy channel model)
+    Problème de décision
+        Trouver la meilleure phrase parmi toutes les phrase possibles
+        $Translation = Argmax_T P(T) P(S|T)$
+        P(T) provient du modèle de langue
+        P(S|T) provient du modèle de traduction
+        On veut trouver P(T|S)
+
+Modèle de langue
+    Objectif: déterminer le score de fluidité de la langue cible P(T)
+
+    N-grammes - séquences de N mots
+        Unigramme, bigramme, trigramme
+        Il faut trouver un compromis: N-gramme trop petit -> pas hyper représentatif de la langue; N-gramme trop grand -> la probabilité de trouver cette chaine dans le corpus est plus petite
+        On dépasse rarement 6-gramme dans l'état actuel des choses.
+
+    Entrainement
+        Prend le corpus monolingue
+        Extrait tous les N-grammes
+        Calcule leur probabilité dans le corpus monolingue, c’est-à-dire leur fréquence dans le corpus
+
+    N-grammes lissés
+    True casing
+
+Modèle de traduction
+    Objectif: déterminer quelle est la traduction la plus fidèle
+    Intuitivement: on regarde dans le corpus bilingue dans quelle mesure chaque mot/segment de T est la traduction des mots/segments de la langue S
+
+
+(.... see slides)
+
+Limites
+    - Gros corpus nécessaires: monolingues et bilingues
+    - Traduisent par segments: Contexte limité à 5-6 mots
+    - Fautes non locales
+    - Ne généralisent pas : si le mot est absent du corpus, il n’est pas traduit
+
+Statistiques VS Linguistiques
+    - Raisons économiques: moins couteux (outils «open source»)
+    - Pas de ressources linguistiques nécessaires (dictionnaires, grammaires, etc.): seule solution pour les langues peu dotées
+    - Meilleure fluidité que les systèmes linguistiques
+    - Se marie bien avec les mémoires de traduction. Pourquoi ?
+
+Inconvénients
+    - Nécessite des corpus représentatifs et assez grands
+    - Moins précis (moins de fidélité)
+        - Risque de contresens plus important, même si la phrase semble naturelle
+    - Difficile à améliorer/modifier de manière transparente
+    - Fonctionne mieux pour des langues proches, sans trop de divergences
+    - Erreurs pas toujours systématiques -> plus difficile à post-éditer
+        - e.g. Ma femme a sauté un repas vs Ma belle femme a sauté un repas
+    - Nécessite pas mal de ressources informatiques pour les estimer/stocker les modèles
+
+Références:
+    Statistical Machine Translation by Koehn
+    Statistical Machine Translation: A guide for linguists and translators (2011)

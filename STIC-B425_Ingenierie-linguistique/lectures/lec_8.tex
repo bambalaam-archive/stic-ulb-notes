@@ -1,0 +1,19 @@
+\lecture{8}{mercredi 25 mars 2020}
+\vspace{-1.2cm}
+
+\section{Aspects sémantiques}
+
+
+Exercices
+
+« Le Gauguin est un bar » : Bar(Gauguin)
+
+« Le Snack 44 sert des sandwiches » : Servir(Snack 44, Sandwiches)
+
+« Je veux manger en terrasse, ou alors pas cher » : Vouloir(Locuteur, x) AND Restaurant(x) AND ( Avoir(x, Terrasse) OR NOT Etre(x, Cher) )
+
+« J'aime les restos italiens et japonais » : Restaurant(x, Italien) OU Restaurant(x, Japonais)
+
+« Peut-on trouver un restaurant végétarien à Ixelles ? » : Exists x: Restaurant(x) AND Type(x, Vegetarien) AND CodePostal(x, 1050)
+
+« Les cafés du Cimetière sont proches de l'ULB » : Pourtout x Cafe(x) : Proche(x, Cimetiered'Ixelles) -> Distance(x, ULB) < 5km

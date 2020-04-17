@@ -1,0 +1,215 @@
+\lecture{6}{mercredi 04 mars 2020}
+\vspace{-1.2cm}
+
+\section{Aspects morpho-lexicaux}
+
+\epigraph{Language is mankind's greatest invention \\- except, of course, that it was never invented!}{\textit{G. Deutscher, 2005, in "The unfolding of language"}}
+
+\textbf{Langages rationnels vs naturels}\\
+
+La grammaire naturelle est composées de règles MAIS contient de nombreuses exceptions. Il est difficile (si pas impossible) d'anticiper toutes les évolutions de la langue:
+
+\begin{enumerate}
+    \item pluriels irréguliers
+    \item néologismes
+    \item langages SMS/tweets
+    \item jargon technique
+    \item ...
+\end{enumerate}
+
+\textbf{Abstraction}\\
+
+Pour formaliser le langage naturel il est nécessaire de faire abstraction de nombreuses richesses. Ces simplifications sont nécessaires mais réductrices. Elles sont souvent limitées à un domaine précis et clos:
+
+\begin{enumerate}
+    \item météo
+    \item réservations
+    \item ELIZA
+    \item ...
+\end{enumerate}
+
+\textbf{Exemples de langages rationnels}\\
+
+\noindent Parler mouton: bê, bêê, bêêê, bêêêê\\
+Rires: haha!, hihihi, hahahaha!
+
+\subsection{Grammaires régulières}
+
+Règles de réécriture: constituant $\rightarrow$ constitué\\
+Majuscules = symboles; minuscules = littéraux\\
+Règles récursives: même symbole utilisé à gauche et à droite de la flèche de réécriture\\
+
+Exemple du parler mouton:
+
+$ X \rightarrow bY $
+
+$ Y \rightarrow \hat e Y $
+
+$ Y \rightarrow \hat e $
+
+\subsection{Expressions régulières}
+
+Permettent d'exprimer des grammaires régulières de manière plus concise.\\
+Sujet complexe et vaste, syntaxe ésotérique.\\
+
+Exemples:
+
+/bê+/\\
+/h[ai](h[ai])+  !?/\\
+/\textbackslash b[A-Z0-9.\_\%+-]+@[A-Z0-9-.]+\textbackslash .[A-Z]\{2,\}\textbackslash b/\\
+
+Exercices online:
+
+http://regex.sketchengine.co.uk/
+
+Solutions:
+
+1 - p.t
+2 - ap.?t
+3 - af+g.?k
+4 - [a-z][.?!]['")]? +[A-Z]
+
+\subsection{Automates finis}
+
+FSA: Finite-State Automata (pluriel de Automaton)
+
+Automate à nombre fini d'états (pas à états finis!)
+
+Les transitions d'un état à un autre sont soumises à la satisfaction d'une condition
+
+États $\rightarrow$ cercles
+    état initial (triangle/flèche isolée)
+    états intermédiaires
+    état final (double cercle)
+Transitions (flèches)
+    d'un état à un autre
+    d'un état à lui-même (récursif)
+    transition lambda/epsilon (vide)
+
+Déterministe vs non-déterministe
+
+Équivalences
+
+    Trois manières d'exprimer la même chose:
+
+        Regular languages
+
+
+\section{Morphologie}
+
+Morphologie permets soit de gérer des variantes de mots (flexionelle) soit de construire des nouveaux mots.
+
+Au niveau de la construction, on peut soit faire une dérivation (en conservant ou changeant la catégorie du mot) soit faire de la composition (noms composés, adjectifs composés, verbes composés, adverbes composés)
+
+Transducteur
+
+    FST: Finite-state transducers
+
+    Similaires aux FSA mais la condition pour passer d'un état à un autre est remplacée par une action à effectuer
+
+    Utilisés soit pour analyser une chaine existante soit pour générer une chaîne à partir de traits
+
+Exemple
+
+Racinisation (stemming)
+    Version simplifiée de l'analyse morphologique
+    Ne s'encombre pas du lexique: principalement basée sur la désuffixation (vs lemmatisation)
+    Moins précise mais beaucoup plus rapide
+    Très utilisée par les moteurs de recherche
+
+Porter stemmer
+    Martin Porter (1980)
+    Ensemble de règles simples en cascade:
+        SSES -> SS
+        ING -> epsilon
+        ATIONAL -> ATE
+    Mais, ce n'est pas hyper précis, il y a de nombreux problèmes:
+        organization -> organ (sens perdu)
+        policy -> police (sens perdu)
+        Adobe Illustrator -> illustrate (nom propre a un sens particulier)
+
+
+Segmentation (tokenization)
+    Séparation d'un texte en phrases et des phrases en mots
+    Étape cruciale pour le succès des states suivants (analyse morphologique, traduction automatique, etc)
+
+Séparation en phrases:
+    Approche naïve: séparation par un point suivi d'un espace. Mais malheureusement cela ne couvre absolument pas tous les cas.
+
+Parts of Speech:
+    Noun Pronoun Verb
+    Adjective Article Adverb
+    Preposition Conjunction Interjection
+    .......
+
+    Les petites poules du couvent les couvent bien
+
+    Les: DET
+    petites: ADJ
+    poules: NOM
+    du: PREP
+    couvent: NOM
+    les: PRON
+    couvent: VB
+    bien: ADV
+
+Tagsets
+    Listes des "parties du discours" (catégories)
+    Granularités très variables:
+        French Treebank: 15 catégories grammaticales
+        Penn Treebank: 36 (45 avec la ponctuation)
+        C5: 67
+        Brown: 87
+        Sinica (chinois): 294 (!!!)
+
+PoS tagging
+    Étiquetage morpho-syntaxique/grammatical
+
+    Trois approches principales:
+        linguistiques (règles)
+        statistique (HMM - hidden markov models, Viterbi)
+        transformative (Brill tagger)
+
+Taggers linguistiques
+    Choix parmi les différents candidats trouvés dans un dictionnaire
+    Basés sur une succession de règles
+    Exemple pour l'anglais: ENGTWOL
+
+    Regles complexes:
+    e.g. "Adverbial-that rule"
+    tout ça n'a enlevé qu'un des 4 cas possibles
+
+
+HMM taggers
+    Approche probabiliste basée sur le modèle bayésien d'inférence (1763)
+    Hidden Markov Model
+    (...)
+
+    Prémisses simplificatrices:
+        la probabilité d'un mot ne dépend pas du contexte (faux, mais c'est pour simplifier)
+        la probabilité d'un tag ne dépend que du précédent (modèle des bigrammes)
+
+    Approximation = produit entre:
+        la probabilité d'un mot hors contexte (fréquence) pour un tag donné
+        la probabilité de transition d'un tag à un autre
+
+
+Brill tagger
+    Approche hybride basée sur des règles ET un entrainement statistique (machine learning)
+
+    Technique supervisée: nécessite un corpus annoté manuellement pour l'apprentissage
+
+    Première approximation probabiliste puis règles de transformation
+
+LatlApps
+    Outils minimalistes de type HMM
+        Syntactic analysis (UniversalTagger / French)
+        Machine translation (Text / fr-en)
+    Tâches sous-jacentes à évaluer
+        Segmentation lexicale (tokenization)
+        Analyse morphologique (PoS tagging + guessing)
+        Désambiguïsation (WSD)
+
+Exercises
+    (....)
+
