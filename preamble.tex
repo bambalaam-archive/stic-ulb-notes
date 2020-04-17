@@ -1,20 +1,27 @@
+% General stuff
 \documentclass[french]{article}
-\usepackage[utf8]{inputenc}
-% \usepackage[T1]{fontenc}
-\usepackage{babel}
-\usepackage{graphicx}
-
-\usepackage{geometry}
-\geometry{
-    a4paper,
-    left=30mm,
-    right=35mm,
-    top=30mm,
-    bottom=25mm,
-}
-
 \author{André Madeira Cortes}
 \date{2019-2020}
+\usepackage{geometry}
+\geometry{a4paper, left=30mm, right=35mm, top=30mm, bottom=25mm,}
+
+% Global packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{babel, graphicx, blindtext, scrextend, hyperref}
+
+% Footnotes
+\usepackage[side]{footmisc}
+\renewcommand{\thefootnote}{\roman{footnote}}
+
+% Epigraphs
+\usepackage{epigraph}
+\setlength\epigraphwidth{1\textwidth}
+\setlength\epigraphrule{0pt}
+\setlength\beforeepigraphskip{1\baselineskip}
+\setlength\afterepigraphskip{2\baselineskip}
+\renewcommand*{\textflush}{flushright}
+\renewcommand*{\epigraphsize}{\normalsize\itshape}
 
 % Lecture command definition
 \usepackage{xifthen}
@@ -36,5 +43,4 @@
 \fancyfoot[C]{}          % Center
 \rfoot{\thepage}
 \renewcommand{\footrulewidth}{1pt}
-
 \makeatother
