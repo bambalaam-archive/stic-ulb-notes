@@ -45,8 +45,10 @@ Il s'agit d'un domaine en constante évolution. Il envisage l'exercice de traduc
 \begin{enumerate}
     \item Rentable, 20\% à 40\% de gain de productivité selon les études (e.g. Plitt \& Masselot 2010, Green 2013)
     \item Ne conduit pas nécessairement à plus d'erreurs ou des textes de moins bonne qualité
-    \item "Posteditese" (e.g. Toral 2019, Kubler 2019) (TODO: Add definition here)
+    \item "Posteditese" (e.g. Toral 2019, Kubler 2019). I.e. : la post-édition donne lieu à des textes avec des particularités différentes de ceux issus de la traduction humaine.
 \end{enumerate}
+
+\newpage
 
 \noindent\textbf{Nouvelles applications de la TA\\}
 
@@ -69,13 +71,13 @@ Il s'agit d'un domaine en constante évolution. Il envisage l'exercice de traduc
 \begin{enumerate}
     \item \textbf{Ambigüité}
     \begin{enumerate}
-        \item Lexicale
-        \item Structurale
+        \item Lexicale (e.g. "fumer \textbf{nuit} à la santé" $\rightarrow$ "to smoke \textbf{night} with health")
+        \item Structurale (e.g. "he hammers the metal \textbf{flat}" $\rightarrow$ "il martèle \textbf{l'appartement} en métal")
     \end{enumerate}
     \item \textbf{Divergences}
     \begin{enumerate}
-        \item Lexicales (décalages)
-        \item Structurales
+        \item Lexicales/Décalages (e.g. "I \textbf{know} this word" $\rightarrow$ "je \textbf{sais} ce mot")
+        \item Structurales (e.g. This is a \textbf{good} man $\rightarrow$ c'est un \textbf{bon} homme)
     \end{enumerate}
     \item \textbf{De nombreuses traductions possibles}
         Comment choisir la meilleure (ou la seule correcte)?
@@ -83,31 +85,37 @@ Il s'agit d'un domaine en constante évolution. Il envisage l'exercice de traduc
 
 \noindent\textbf{Divergences structurales\\}
 
-(TODO)
+\begin{enumerate}
+    \item Typologiques
+    \begin{enumerate}
+        \item Ordre des mots (e.g. SVO en FR, SOV en Japonais et VSO en Arabe)
+        \item Pronoms
+    \end{enumerate}
+    \item Idiosyncratiques (propres à une langue)
+    \item Générales à la syntaxe d'une langue
+    \item Déclenchées par un mot particulier \\
+\end{enumerate}
 
-- Typologiques
-    - Ordre des mots (e.g. SVO en FR, SOV en Japonais et VSO en Arabe)
-    - Pronoms
-- Idiosyncratiques (propres à une langue)
-- Générales à la syntaxe d'une langue
-- Déclenchées par un mot particulier
+Du plus facile au plus compliqué à résoudre (Vandooren 1993) \\
 
-Du plus facile au plus compliqué à résoudre (Vandooren 1993)
-- Catégorielle (e.g. nom vers adjectif)
-- Syntagmatique
-- Lexicale
-- De densité lexicale
-- Thématique
-- Prédicative
+\begin{enumerate}
+    \item Catégorielle (e.g. nom vers adjectif, "\textbf{university} degree" $\rightarrow$ "diplôme \textbf{universitaire}")
+    \item Syntagmatique (e.g. "I’m waiting for the postman to pass" $\rightarrow$ "j’attends le passage du facteur")
+    \item Lexicale (e.g. "\textbf{I'm} hungry" $\rightarrow$ "\textbf{J'ai} faim")
+    \item De densité lexicale (e.g. "he retired" $\rightarrow$ "il a pris sa retraite")
+    \item Thématique (e.g. John \textbf{missed} Mary $\rightarrow$ Marie \textbf{a manqué à} Jean)
+    \item Prédicative (e.g. "he hammers the metal flat" $\rightarrow$ "il aplatit le métal avec un marteau")\\
+\end{enumerate}
 
-Statistiques des divergences (Dorr 2002)
-- Part of Speech (98\%)
-- Phrase/Light verb (83\%)
-- Structural (35\%)
-- Heads swap (8\%)
-- Arguments swap (6\%)
+\noindent\textbf{Statistiques des divergences (Dorr 2002)\\}
 
-(END OF TODO)
+\begin{enumerate}
+    \item Part of Speech (98\%)
+    \item Phrase/Light verb (83\%)
+    \item Structural (35\%)
+    \item Heads swap (8\%)
+    \item Arguments swap (6\%)
+\end{enumerate}
 
 \newpage
 
@@ -123,26 +131,48 @@ Beaucoup de différences entre ces systèmes, mais quelques points communs:
 
 \begin{enumerate}
     \item \textbf{Analyse linguistique} pour extraire le sens de la phrase
-    ("natural language understanding")
-    \begin{enumerate}
-        \item Pipeline linguistique (on passe par différents niveaux: lexical,
+    ("natural language understanding"). Pipeline linguistique (on passe par différents niveaux: lexical,
         syntaxique, sémantique, pragmatique/extralinguistique)
-    \end{enumerate}
     \item \textbf{Transfert}
-    \item \textbf{Géneration} de la langue cible
+    \item \textbf{Génération} de la langue cible\\
+\end{enumerate}
+
+\textbf{En résumé}
+
+\begin{enumerate}
+    \item Très ambitieux
+    \item Hypothèses (fausses)
+    \begin{itemize}
+        \item Assume qu'il y a beaucoup de régularités entre les langues
+        \item Assume qu'il existe peu d'exceptions (grammaires compactes)
+        \item Assume que toutes les règles peuvent être définies par des experts
+    \end{itemize}
+    \item Problèmes
+    \begin{itemize}
+        \item Robustesse: les langues ne sont pas si régulières
+        \item Chers et lents à développer
+        \item Statiques: figés dans le temps, n'apprennent pas via de nouveaux corpus
+    \end{itemize}
 \end{enumerate}
 
 \subsection{Systèmes directs/minimalistes}
 
-Les plus simples. Fonctionnent en deux étapes:
+Les plus simples, ils reposent sur des dictionnaires énormes faits humainement. Ne peuvent donner des résultats exploitables que si le sous-langage et le dictionnaire sont bien spécialisés.\\
+
+\textbf{Fonctionnement}
 
 \begin{enumerate}
-    \item \textbf{Compréhension minimale (lexicale)}
-    \begin{enumerate}
-        \item Segmentation en mots
-        \item Tagging de catégorie grammaticale de chaque mot
-    \end{enumerate}
-    \item \textbf{Traduction} mot à mot avec un dictionnaire bilingue
+    \item \textbf{Compréhension minimale (lexicale)}: segmentation en mots et tagging de catégorie grammaticale de chaque mot
+    \item \textbf{Traduction}: mot à mot avec un dictionnaire bilingue
+    \item \textbf{Génération}: flexions, ordre des mots, élision, etc.\\
+\end{enumerate}
+
+\textbf{Problèmes}
+
+\begin{enumerate}
+    \item \textbf{Compréhension}: Analyse morphologique et résolution des homographes catégoriels. Le système ne voit pas l’ambiguïté structurale des phrases, il reste au niveau lexical.
+    \item \textbf{Traduction}: Tests/actions limités. Un dictionnaire par paire de langues.
+    \item \textbf{Génération}: Architecture de type "transformateur". Pas de connaissances grammaticales de la langue cible, comme dans les systèmes indirects.\\
 \end{enumerate}
 
 \textbf{Dictionnaire}
@@ -151,6 +181,8 @@ La ressource principale des systèmes directs (pas de grammaires).
 
 Il contient toutes les informations nécessaires pour la compréhension et la traduction,
 c'est à dire au minimum: le mot/expression source/cible, les informations lexicales monolingues sur le mot/expression source/cible et les informations bilingues.\\
+
+\newpage
 
 \textbf{Informations bilingues}
 
@@ -192,28 +224,7 @@ to grow (context: corn, salad, etc.) = cultiver \\
 \textbf{Actions}
 
 Permettent de traiter les divergences, c'est-à-dire de changer la syntaxe sous
-certaines conditions.
-
-(TODO)
----
-en TROIS étapes??
-
-Compréhension
-    Problèmes:
-        - Analyse morphologique et résolution des homographes ca
-Traduction
-    Problèmes:
-        - Tests/actions limités
-        - 1 dictionnaire par paire de langues
-Génération
-    Problèmes:
-        - Architecture de type "transformateur"
-        - Pas de connaissances grammaticales de la langue cible, comme dans les systèmes indirects
-
----
-Ne peut donner des résultats exploitables que si sous-langage et dictionnaire bien spécialisé
-
-(END TODO)
+certaines conditions. Exemple: "hungry" en anglais qui devient "avoir faim".
 
 \subsection{Systèmes indirects/maximalistes}
 
@@ -225,24 +236,40 @@ Ils sont les seuls systèmes linguistiques à faire de la TEAHQ.\\
 \textbf{Caractéristiques}
 
 \begin{enumerate}
-    \item Ne restent pas au niveau lexical. Font au moins une analyse syntaxique complète, avec une grammaire, et représentent ainsi le sens de la phrase à traduire
-    \item Ne mettent pas en relation directe des mots, mais mettent en correspondance des représentations
+    \item Ne restent pas au niveau lexical. Font au moins une analyse syntaxique complète, avec une grammaire, et représentent ainsi le sens de la phrase à traduire.
+    \item Ne mettent pas en relation directe des mots, mais mettent en correspondance des représentations.
 \end{enumerate}
 
 \textbf{Avantages}
 
 \begin{enumerate}
-    \item Représentent l’ambigüité structurale
-    \item Évitent les erreurs de désambigüisation lexicale
+    \item Les représentations rendent explicites plus d'informations qui peuvent être ainsi utilisées pour la traduction.
+    \item Facilitent le lien entre les langues.
+    \item Représentent l’ambigüité structurale. (e.g. Fumer nuit/v à la santé)
 \end{enumerate}
 
-Systèmes de TA indirects
-    - Par transfert
-    - Par interlangue
+\textbf{Fonctionnement}
 
-Théories de la traduction circa '90
-    - Deverbalisation du sens
-    - Production
+\begin{enumerate}
+    \item Représentation: devrait contenir ce que les traducteurs rendent explicites quand ils traduisent
+    \item Deux approches
+        \begin{itemize}
+            \item Par transfert: peut-on se limiter à une représentation spécifique à chaque langue?
+            \item Par interlangue: faut-il définir une représentation indépendante des langues? \\ \\ \\
+        \end{itemize}
+\end{enumerate}
+
+\textbf{Différences transfert VS interlangue}
+
+\begin{enumerate}
+    \item Types de représentation: similaire ou pas pour les langues?
+    \item Connaissances contrastives
+    \item Type de traduction
+    \begin{itemize}
+        \item Transfert: littérale, on préserve la syntaxe
+        \item Interlangue: par paraphrase, on va vers le sens et on génère avec le sens de la phrase
+    \end{itemize}
+\end{enumerate}
 
 \vspace{1cm}
 
@@ -257,78 +284,57 @@ Théories de la traduction circa '90
 Axe vertical: profondeur d'analyse, niveau d'analyse syntaxique
     e.g. directs on reste au niveau lexical, transfert au moins syntaxique, interlingue on va jusqu'au niveau sémantique
 
-Axe horizontal: quantité de connaissance contrastive qu'il faut pour passer d'une langue à l'autre
+Axe horizontal: quantité de connaissance contrastive qu'il faut pour passer d'une langue à l'autre \\
 
-Systèmes par transfert:
+\subsubsection{Systèmes par transfert}
 
-    - Module d'analyse: syntaxique et spécifique à la langue (par définition)
-    - Module de transfert: règles de transfert
-    - Génération: Représentation syntaxique cible -> texte cible
+\begin{itemize}
+    \item Module d'analyse: syntaxique et spécifique à la langue (par définition)
+    \item Module de transfert: règles de transfert
+    \item Génération: Représentation syntaxique cible $\rightarrow$ texte cible\\
+\end{itemize}
 
-Types de règles de transfert:
+\textbf{Types de règles de transfert}
 
-    - Lexicales: équivalences entre les mots
-    - Structurales: liens entre les éléments structuraux (e.g. verb --> verbe, subject -> sujet)
-    - Semi-lexicales: permettent de changer la syntaxe de la phrase via des tests et actions
+\begin{itemize}
+    \item Lexicales: équivalences entre les mots
+    \item Structurales: liens entre les éléments structuraux (e.g. verb $\rightarrow$ verbe, subject $\rightarrow$ sujet)
+    \item Semi-lexicales: permettent de changer la syntaxe de la phrase via des tests et actions\\
+\end{itemize}
 
-Avantages:
+\textbf{Avantages}
 
-Systèmes par interlangue
+\begin{itemize}
+    \item Séparation des connaissances monolingues et bilingues.
+    \item Connaissances de la grammaire cible (grammaire). Moins de fautes dans la langue cible.
+    \item Tests valides. (e.g. know + phrase = savoir VS know + GN = connaître)
+    \item Les connaissances syntaxiques aident grandement à écrire les actions. (e.g. inverser sujet/objet)
+\end{itemize}
 
-Problèmes:
-    - Concepts: définir l'ensemble des concepts et choisir le bon contexte. Ceci oblige à faire des distinctions qui ne sont pas nécessaires pour toutes les paires de langues. E.g. espagnol: différence entre le mot pour poisson vivant et poisson mort.
-    - Granularité de la représentation:
+\newpage
 
-Dionysus:
-    Facteurs pragmatiques:
-        Formalité: formel ou pas
-        Simplicité: simple ou pas
-        Force
-        Couleur
-        Respect
-    Relations entre les phrases
-        Domaine (cause, motivation), textuelle (conclusion, reformulation), temporelle
-    Attitude
-        emphase, croyance, négative, positive
-    Intention
-        question, requête
+\subsubsection{Systèmes par interlangue}
 
+\textbf{Problèmes}
 
-Différences transfert vs interlangue
-    Types de représentation
-        Transfert: spécifique à la langue
-    Connaissances contrastives
-    Type de traduction
-        Transfert: littérale, on préserve la syntaxe
-        Interlangue: par paraphrase, on va vers le sens et on génère avec le sens de la phrase
-
-Exemples:
-    Première par transfert
-    Deuxième par interlangue
-
-Exemples d'interlangue:
-    UNL (ONU)
-    Ontologie -> concepts communs à toutes les langues
-
-    Esperanto
-    Distributed Language Translation
+\begin{itemize}
+    \item Concepts: définir l'ensemble des concepts et choisir le bon contexte. Ceci oblige à faire des distinctions qui ne sont pas nécessaires pour toutes les paires de langues. E.g. espagnol: différence entre le mot pour poisson vivant et poisson mort.
+    \item Granularité de la représentation.\\
+\end{itemize}
 
 
-Contexte positif pour l'interlangue
-    - Sous dommaine, si possible technique
-        - Travail humain énorme
-    - Contexte multilingue
-        - un seul système, au lieu d'un système par chaque paire de langues
-    - Langues très différentes
-        - e.g. Japonais, le transfert ne fonctionne pas vu la différence énorme au niveau de la grammaire
+\textbf{Exemples d'interlangue}
 
-Systèmes linguistiques résumé
-    Très ambitieux
-    Hypothèses:
-        - Bcp de régularités entre les langues: faux
-        - Peu d'exceptions: faux
-        - Règles peuvent être définies par des experts
-    Problèmes:
-        - Robustesse: les langues ne sont pas si régulières
-        - Chers et lents à développer
-        - Statiques: figés dans le temps, n'apprennent pas via de nouveaux corpus.
+\begin{itemize}
+    \item Pour la langue générale: UNL Universal Networking Language (ONU), Nespole!, Esperanto, DLT Distributed Language Translation
+    \item Pour des domaines limités: Kantoo, Kant, Tamerlan, Dionysus
+    \item Systèmes commerciaux: Atlas II (Fujitsu, Uchida), PIVOT (Nec)\\
+\end{itemize}
+
+\textbf{Contexte positif pour l'interlangue}
+
+\begin{itemize}
+    \item Sous domaine, si possible technique (terminologie): travail humain énorme
+    \item Contexte multilingue: un seul système, au lieu d'un système par chaque paire de langues
+    \item Langues très différentes: e.g. Japonais, le transfert ne fonctionne pas vu la différence énorme au niveau de la grammaire
+\end{itemize}
