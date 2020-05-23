@@ -15,14 +15,14 @@ curieux d'appliquer leurs modèles mathématiques dans l'étude de la linguistiq
 
 \textbf{Applications possibles de la discipline:}\\
 
-\begin{minipage}[t]{0.5\textwidth}
+\begin{minipage}[t]{0.6\textwidth}
 \begin{itemize}
 \item Correction orthographique/grammaticale
 \item Traduction automatique/assistée
 \item Reconnaissance et synthèse vocale
 \end{itemize}
 \end{minipage}
-\begin{minipage}[t]{0.5\textwidth}
+\begin{minipage}[t]{0.4\textwidth}
 \begin{itemize}
 \item Extraction d'informations
 \item Analyse de sentiments
@@ -60,10 +60,9 @@ de l'ingénierie linguistique, car le langage humain est ambigu à tous les nive
     \item \textbf{Ambigüité phonétique}: Homophonie
     \item \textbf{Ambigüité morpho-lexicale}: Homographie
     \item \textbf{Ambigüité syntaxique}
-    \item \textbf{Ambigüité sémantique}
-    \item \textbf{Sémantique}: Hors contexte, certaines phrases peuvent être lues de façons différentes
+    \item \textbf{Ambigüité sémantique} Hors contexte, certaines phrases peuvent être lues de façons différentes
     \item \textbf{Ambigüité pragmatique}: Ironie, par exemple
-    \item \textbf{Ambigüité multilingue}
+    \item \textbf{Ambigüité multilingue} \\
 \end{itemize}
 
 \noindent\textbf{Contraintes supplémentaires:}
@@ -78,13 +77,7 @@ de l'ingénierie linguistique, car le langage humain est ambigu à tous les nive
 
 \subsection{Un peu d'histoire}
 
-(TO DO)
-
-Test de Turing / Imitation Game
-
-\newpage
-
-\textbf{Hiérarchie de Noam Chomsky (1956):} \\
+\textbf{Hiérarchie de Noam Chomsky (1956)} \\
 
 Classification des grammaires en quatre catégories, de la plus libre à la plus contraignante
 
@@ -93,3 +86,55 @@ Classification des grammaires en quatre catégories, de la plus libre à la plus
 \resizebox{0.9\textwidth}{!}{
     \input{images/lec1_tikz1.tex}
 }
+
+\newpage
+
+\textbf{Test de Turing / Imitation Game} \\
+
+Proposition de test d’intelligence artificielle décrit par Alan Turing en 1950. Ce test consiste à mettre un humain en conversation à l’aveugle avec un ordinateur et un autre humain pour évaluer la capacité de cette machine à imiter la conversation humaine. Si le programme réussis à tromper des humains plus de 30\% des fois, on considère le test réussi. \\
+
+De nombreuses objections à ce test ont été suggérées tout comme réfutées depuis des années, certaines par Alan Turing lui-même, mais il reste tout de même un théorème central dans l'étude de l'intelligence artificielle. \\
+
+ELIZA, une simulation de thérapie rogérienne développée en 1966, a été une des premières à tromper des humains mais on peut pas dire qu'il s'agit d'un succès du test de Turing, car les personnes l'utilisant n'avaient aucune raison de suspecter qu'elles ne parlaient pas à un humain, ce qui est l'élément central du test. \\
+
+\subsection{Éclatement de la discipline}
+
+\textbf{Approches linguistiques}
+
+Aussi appelées symboliques ou rule-based. Basées sur la compréhension du langage et
+l'intuition humaine. Patterns récurrents + heuristiques simples.
+Nécessitent de coder chaque règle à la main : investissement énorme en termes de temps, argent et ressources humaines \\
+
+\textbf{Approches statistiques}
+
+Aussi appelées stochastiques ou probabilistes. Très rapides mais souvent moins précises.
+
+Modèle bayésien naïf : inférence permettant d'estimer la probabilité d'une chaîne de caractères à partir des probabilités de chaînes existantes. \\
+
+\textbf{Approches hybrides}
+
+Combinent la puissance des approches statistiques avec la finesse d'analyse des approches linguistiques.
+La plupart des systèmes actuels sont de ce type et incluent donc différentes composantes complémentaires pour atteindre un niveau de pointe. \\
+
+\textbf{Apprentissage automatique}
+
+Plus connu sous le nom de machine learning. Data-driven : nécessite un grand volume de
+données pour entraîner les algorithmes.
+
+Utilisation de corpus annotés : Penn Treebank, Brown, Reuters, Europarl...
+
+Supervisé vs non-supervisé. Apprentissage profond (deep learning) et réseaux de neurones.
+
+\subsection{État de l'art}
+
+\textbf{Globalement résolu}
+
+Détéction de spam. Tagging the part-of-speech. "Named entity recognition" (NER).\\
+
+\textbf{En progrès constant}
+
+Analyse de sentiment de texte. Parsing. Traduction automatique. Extraction d'information.\\
+
+\textbf{Toujours très complexe}
+
+Question answering. Paraphrase. Résumé de texte. Dialogue.\\
