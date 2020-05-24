@@ -3,383 +3,376 @@
 
 \section{Evaluation de la TA}
 
-Evaluation de la TA
-    Un des problèmes les plus traités
-    Beaucoup d’impact
-    Problème très difficile (subjectivité du langage)
+Évaluation de la TA: Un des problèmes les plus traités. Beaucoup d’impacts. Problème très difficile (subjectivité du langage).\\
 
-Types d’évaluation
-    Humaine
-    Automatique (avec référence(s) humaine(s))
-    Automatique (sans référence) («quality estimation»)
+Types d’évaluation:
 
-    Objectif: Trouver la méthode la moins subjective, la plus rapide et la moins chère possible
+\begin{itemize}
+    \item Humaine
+    \item Automatique (avec référence(s) humaine(s))
+    \item Automatique (sans référence) («quality estimation»)\\
+\end{itemize}
+
+Objectif: Trouver la méthode la moins subjective, la plus rapide et la moins chère possible.\\
+
+Se méfier des évaluations automatiques, même si c’est la norme. Toujours comparer l’évaluation humaine et automatique. Vérifier l’accord en juges et la corrélation entre les évaluations.
 
 \subsection{Évaluation Humaine}
 
-Demande à des juges humains d’évaluer une traduction, phrase par phrase.
+Demande à des juges humains d’évaluer une traduction, phrase par phrase. Question courante: faut-il montrer les phrases dans le contexte ou pas?\\
 
-Question courante: faut-il montrer les phrases dans le contexte ou pas?
+\textbf{Critères de qualité}
 
-Critères de qualité:
-    Fidélité («adequacy»)
-        Est-ce que le sens est correct ?
-        Se fait toujours avec la langue source.
-    Fluidité («fluency»)
-        Est-ce que la phrase se lit bien ?
-        Peut se faire sans la langue source.
+\begin{itemize}
+    \item Fidélité («adequacy»): Est-ce que le sens est correct ? Se fait toujours avec la langue source.
+    \item Fluidité («fluency»): Est-ce que la phrase se lit bien ? Peut se faire sans la langue source. \\
+\end{itemize}
 
-    Ces deux critères sont parfois combinés, on mesure si la traduction est correcte
-
-Comment évaluer?
+Ces deux critères sont parfois combinés, on mesure si la traduction est correcte. Comment évaluer?
 
 \subsubsection{Jugement intuitif}
 
 On demande un jugement intuitif sur la qualité de la traduction, avec une échelle (par exemple Koehn)
 
-\begin{table}
+\begin{table}[H]
+    \centering
     \begin{tabular}{|l|l|}
     \hline
-    Fluency          & Adequacy       \\ \hline
-    flawless         & all meaning    \\ \hline
-    good             & most meaning   \\ \hline
-    non-native       & much meaning   \\ \hline
-    disfluent        & little meaning \\ \hline
-    incomprehensible & none           \\ \hline
+    \textbf{Fluency} & \textbf{Adequacy}       \\ \hline
+    flawless         & all meaning             \\ \hline
+    good             & most meaning            \\ \hline
+    non-native       & much meaning            \\ \hline
+    disfluent        & little meaning          \\ \hline
+    incomprehensible & none                    \\ \hline
     \end{tabular}
 \end{table}
 
 
-\textbf{Quelle échelle ?}
-Expériences avec 3 à 10 échelons dans la littérature
-Problème avec une échelle trop petite / grande ?
-Problème avec des échelles impaires ?
+\textbf{Quelle échelle ?:}
+Expériences avec 3 à 10 échelons dans la littérature. Problème avec une échelle trop petite / grande ? Problème avec des échelles impaires ?
 
-\textbf{Nombre de juges}
-Accord entre juges («inter-agreement») (score Kappa)
-plus il y a d’accord, plus les résultats sont fiables
-Que pourrait-on faire si on a un nombre impair de juges ?
+\textbf{Nombre de juges:}
+Accord entre juges («inter-agreement») (score Kappa). Plus il y a d’accord, plus les résultats sont fiables. Que pourrait-on faire si on a un nombre impair de juges ?
 
-\textbf{Profil des juges}
-Traducteurs ou utilisateurs (médecins, informaticiens) ?
-Beaucoup d’expériences avec le crowdsourcing
-Juges monolingues ou bilingues ?
+\textbf{Profil des juges:}
+Traducteurs ou utilisateurs (médecins, informaticiens) ?. Beaucoup d’expériences avec le crowdsourcing. Juges monolingues ou bilingues ?
 
-\textbf{Résumé}
-Permet d’obtenir une idée de la qualité de la traduction (avec une échelle)
-Mais : beaucoup de variation entre les juges, surtout non-traducteurs
+\textbf{Résumé:}
+Permet d’obtenir une idée de la qualité de la traduction (avec une échelle). Mais : beaucoup de variation entre les juges, surtout non-traducteurs.
 
 \subsubsection{Méthode comparative}
 
-«Ranking» (Koehn)
-On compare deux traductions
-L’une des deux traductions est-elle meilleure que l’autre ?
-Si oui = 1, si non = 0
+«Ranking» (Koehn).
+On compare deux traductions. L’une des deux traductions est-elle meilleure que l’autre ? Si oui = 1, si non = 0.
 
-Mêmes questions que pour le jugement intuitif
-Quels critères
-avec et sans LS
-Quelle échelle
-Quels évaluateurs et combien ?
-Important de changer l’ordre de présentation des phrases
+Mêmes questions que pour le jugement intuitif. Quels critères? Avec et sans LS? Quelle échelle? Quels évaluateurs et combien ? Important de changer l’ordre de présentation des phrases.
 
-Plus d’accord entre les juges qu’avec la méthode précédente
-Tâche bcp plus simple
-N’exige pas nécessairement des traducteurs
-Convient bien pour le crowdsourcing
-Limites ?
+Plus d’accord entre les juges qu’avec la méthode précédente. Tâche bcp plus simple. N’exige pas nécessairement des traducteurs. Convient bien pour le crowdsourcing. Limites ?
 
-\subsubsection{Nombre d'erreurs}
+\subsubsection{Erreurs}
 
-Nombre d’erreurs à corriger pour avoir traduction parfaite :
-Remove all the safety pins from the reservoir -> retirer toutes les goupilles de sécurité du réservoir
-Syst. ling. : Retirez{*éliminez} chaque goupille de sécurité du réservoir.
-Syst. stat. : Retirez tous les goupille de sécurité du réservoir
+Nombre d’erreurs à corriger pour avoir traduction parfaite.\\
 
-Poids différent pour les erreurs, soit en fonction du type d’erreurs ou éventuellement du type de correction :
-Correction d’un groupe de plus d’un mot (sg -> pl) : 2
-Sélection d’un mot dans une liste : 0.5
+Poids différent pour les erreurs, soit en fonction du type d’erreurs ou éventuellement du type de correction.
+Exeple: Correction d’un groupe de plus d’un mot (sg $\rightarrow$ pl) : 2. Sélection d’un mot dans une liste : 0.5. \\
 
-Standards:
-    MQM le plus utilisé
-    SAE très orienté industrie spécialisée
+Standards: MQM est le plus utilisé. SAE très orienté industrie spécialisée. LISA. TMS. \\
 
-Calcul de taux d'erreur
-Nombre d'erreurs de type X multiplié par le poids de l'erreur (selon l'échelle du standard). On somme au final tous les scores et on divise par le nombre total de mots.
+\textbf{Calcul de taux d'erreur} \\
 
-Taux d'erreurs
-    Très précis
-    Mais
-        Très long
-        Très peu d'accord entre les juges
-        Poids a beaucoup d'importance -> subjectivité
+Nombre d'erreurs de type X multiplié par le poids de l'erreur (selon l'échelle du standard). On somme au final tous les scores et on divise par le nombre total de mots. \\
 
-Critère: compréhensibilité
-    Questionnaires de compréhension
-    Gap filling
-    "Exploring gap filling as a cheaper alternative to reading comprehension questionnaires when evaluating machine translation for gisting"
+Système très précis mais: très long, très peu d'accord entre les juges et le poids de l'erreur à beaucoup d'importance (subjectivité du correcteur ou du standard).\\
 
-Évaluation humaine: résumé
 
-Manière naturelle de procéder et reste la référence, mais :
-    Subjectivité: peu d'accord entre les juges
-    Coût important: il faut en général payer les juges
-    Temps
-Intéressant d'avoir une méthode automatique
+\textbf{Critère: compréhensibilité}
+
+Questionnaires de compréhension. Gap filling. "Exploring gap filling as a cheaper alternative to reading comprehension questionnaires when evaluating machine translation for gisting".\\
+
+\textbf{Résumé}
+
+Manière naturelle de procéder et reste la référence, mais: très subjectif (peu d'accord entre les juges), coût important (il faut en général payer les juges) et coûteux en temps. Il serait intéressant d'avoir une méthode automatique.
 
 \subsection{Évaluation automatique}
 
-Comparer automatiquement les traductions avec une ou plusieurs références (métriques)
+Comparer automatiquement les traductions avec une ou plusieurs références (métriques).
 
 \subsubsection{Rappel et Précision}
 
-Basées sur le mot
-Proviennent du domaine de la recherche d’informations
-Rappel: Complétude : rép. correctes / total réponses correctes (silence, faux négatifs)
-Précision: Le logiciel est-il précis ? Rép. Correctes / total réponses données (bruit, faux positifs)
+Basées sur le mot.
+Proviennent du domaine de la recherche d’informations. \\
+
+Rappel: Calcul de la Complétude. Rép. correctes / total réponses correctes (silence, faux négatifs) \\
+
+Précision: Le logiciel est-il précis ? Rép. correctes / total réponses données (bruit, faux positifs) \\
 
 F-measure: moyenne des 2 mesures
 
-$$F-measure = \frac{correct}{(output-length + reference-length)/2}$$
+$$F-measure = \frac{\text{correct}}{\text{(output-length + reference-length)}/2}$$
 
 \subsubsection{WER (word error rate)}
 
-Bcp utilisé en reconnaissance vocale
-Basé sur le mot, mais prend en compte l’ordre des mots
-Nombre d’étapes d’édition minimales nécessaires pour arriver à la référence (insertions, suppressions, substitutions) / nombre de mots de la référence
+Beaucoup utilisé en reconnaissance vocale. Basé sur le mot, mais prend en compte l’ordre des mots. Nombre d’étapes d’édition minimales nécessaires pour arriver à la référence (insertions, suppressions, substitutions) / nombre de mots de la référence
 
 $$WER = \frac{S+D+I}{N}$$
 
-S: substitution
-D: deletion
-I: insertion
+\vspace{0.5cm}
+
+S: substitution /
+D: deletion /
+I: insertion /
 N: number of words (in reference)
 
 \subsubsection{Bleu}
 
-Calcul de la précision au niveau des N-grammes
-Combien de N-grammes en commun entre la traduction et la référence ?
-Bleu 2, Bleu 3, Bleu 4,...
-Score entre 0 et 1
-On peut faire des "Bleus cumulés" (prends en compte les bleus de niveau inférieur)
+Calcul de la précision au niveau des N-grammes. Combien de N-grammes en commun entre la traduction et la référence ?
+Bleu 2, Bleu 3, Bleu 4,... Il s'agit d'un score entre 0 et 1. On peut faire des "Bleus cumulés" (prendre en compte les bleus de niveau inférieur).\\
 
-Améliorations possibles:
-- Plusieurs références possibles
-- Ajout d’une pénalité si la phrase traduite est plus courte que la référence (brevity penality)
-- Calcul de précision revisitée
+\textbf{Améliorations possibles}
 
-Avantages:
-- Mesure si la traduction est fluide et fidèle, contrairement à des métriques basées sur le mot
-- Semble souvent donner des corrélations avec les jugements humains
-- Peut être intéressant pour comparer différentes versions d’un système
+\begin{itemize}
+    \item Plusieurs références possibles
+    \item Ajout d’une pénalité si la phrase traduite est plus courte que la référence (brevity penality)
+    \item Calcul de précision revisitée\\
+\end{itemize}
 
-Limites:
-- Que veut dire le Bleu score ?
-- Dépend beaucoup de la référence et nécessite si possible plusieurs références (couteux)
-- Favorise les systèmes SMT vs NMT (see Volkaert as reference)
-- Attention à la ponctuation, tags, etc.
-    L’orage (un mot VS deux mots)
+\textbf{Avantages}
 
-Amélioration:
-- Comparaison au niveau de la forme de surface des mots suffisante ? (METEOR) (prendre en compte la forme de base du mot et les synonymes, e.g. pas de score zero entre safety et security)
-- Tous les N-grammes ont-ils le même poids? (NIST)
+\begin{itemize}
+    \item Mesure si la traduction est fluide et fidèle, contrairement à des métriques basées sur le mot
+    \item Semble souvent donner des corrélations avec les jugements humains
+    \item Peut être intéressant pour comparer différentes versions d’un système\\
+\end{itemize}
 
-\subsubsection{Conclusion sur l'évaluation}
+\textbf{Limites}
 
-- Se méfier des évaluations automatiques, même si c’est la norme
-- Toujours comparer l’évaluation humaine et automatique
-- Vérifier l’accord en juges et la corrélation entre les évaluations
+\begin{itemize}
+    \item Que veut dire le score Bleu?
+    \item Dépend beaucoup de la référence et nécessite si possible plusieurs références (coûteux)
+    \item Favorise les systèmes SMT vs NMT (voir Volkaert)
+    \item Attention à la ponctuation, tags, etc. (e.g. L’orage, un mot ou deux?)\\
+\end{itemize}
+
+\textbf{Amélioration}
+
+\begin{itemize}
+    \item METEOR: Est-ce que la comparaison au niveau de la forme de surface des mots est suffisante ? (prendre en compte la forme de base du mot et les synonymes, e.g. pas de score zero entre "safety" et "security")
+    \item NIST: Tous les N-grammes ont-ils le même poids?\\
+\end{itemize}
 
 \subsection{Quality estimation}
 
-Cherche à indiquer automatiquement la qualité de la traduction automatique (pour différentes tâches), sans utiliser de référence
-    TA : bonne ou pas ?
-    Niveau du texte ou de la phrase
-Scénario typique : Traduction humaine ou post-édition
+Cherche à indiquer automatiquement la qualité de la traduction automatique (pour différentes tâches), sans utiliser de référence, au niveau du texte ou de la phrase.\\
 
 Utilise l’apprentissage automatique
-    - part d’exemples de bonnes et mauvaises traductions
-    - on construit automatiquement le classifieur, qui va classer de nouvelles phrases/documents en utilisant différentes propriétés (traits)  appris des données d’entrainement (mais si la phrase est plus longue que X mots, c’est difficile)
 
-Traits
-    - Modèles /Système
-    - Textes (avec ou sans analyse syntaxique)
-    - Trouver la meilleure combinaison
+\begin{itemize}
+    \item part d’exemples de bonnes et mauvaises traductions
+    \item on construit automatiquement le classifieur, qui va classer de nouvelles phrases/documents en utilisant différentes propriétés (traits) appris des données d’entrainement (mais si la phrase est plus longue que X mots, c’est difficile)\\
+\end{itemize}
 
-Critères texte source
-1. nombre de mots dans le segment source ;
-2. longueur moyenne des phrases
-4. nombre de N-grammes rares (mots, POS) dans le corpus source
-5. nombre de mots qui ne contiennent pas a-z
-6. nombre de signes de ponctuations
-7. nombre de mots avec plusieurs catégories grammaticales
+\textbf{Traits}
 
-Critères texte cible
-1. différence nombre de mots sources et cibles
-2. différences au niveau des virgules
-3. différences au niveau du nombre de verbes
-4. nombre moyen de traductions pour les mots de la phrase cible
-5. nombre d’alignements possibles
-6. séquences rares dans le corpus cible
+\begin{itemize}
+    \item Modèles /Système
+    \item Textes (avec ou sans analyse syntaxique)
+    \item Trouver la meilleure combinaison\\
+\end{itemize}
 
-Limitations
-- Tâche difficile car plusieurs traductions possibles
-- Peu de données annotées (Shared task)
-- Marche mieux au niveau du texte
-- Classification souvent binaire
+\textbf{Critères texte source}
 
-(Lire Specia)
-(Lire chapitre de livre de Koehn)
+\begin{itemize}
+    \item nombre de mots dans le segment source ;
+    \item longueur moyenne des phrases
+    \item nombre de N-grammes rares (mots, POS) dans le corpus source
+    \item nombre de mots qui ne contiennent pas a-z
+    \item nombre de signes de ponctuations
+    \item nombre de mots avec plusieurs catégories grammaticales\\
+\end{itemize}
+
+\newpage
+
+\textbf{Critères texte cible}
+
+\begin{itemize}
+    \item différence nombre de mots sources et cibles
+    \item différences au niveau des virgules
+    \item différences au niveau du nombre de verbes
+    \item nombre moyen de traductions pour les mots de la phrase cible
+    \item nombre d’alignements possibles
+    \item séquences rares dans le corpus cible\\
+\end{itemize}
+
+\textbf{Limitations}
+
+\begin{itemize}
+    \item Tâche difficile car plusieurs traductions possibles
+    \item Peu de données annotées (Shared task)
+    \item Marche mieux au niveau du texte
+    \item Classification souvent binaire
+\end{itemize}
 
 \section{Postédition (PE)}
 
-Correction de la TA par des êtres humains
-The “term used for the correction of machine translation output by human linguists/editors” (Veale and Way, 1997)
+Correction de la TA par des êtres humains. Véritable métier qui se développe: de plus en plus de formations reconnues (e.g. Certification SDL). 15\% des diplômés faisaient de la post-édition en 2017.\\
 
-Véritable métier qui se développe
-De plus en plus de formations reconnues
-Certification SDL
-15\% des diplômés faisaient de la post-édition en 2017
+\textbf{Post-édition vs. révision}
 
-Post-édition vs. révision
-La post-édition $\neq$ révision des traductions
-“A process of modification rather than revision” (Loffler‐Laurian 1985)
-Mossop, 2001
-Les réviseurs vérifient la fluidité, les post-éditeurs la fidélité
+La post-édition $\neq$ révision des traductions. Les réviseurs vérifient la fluidité, les post-éditeurs la fidélité. Les types de fautes ne sont pas identiques:\\
 
-Différence PE - révision
+TA: Fautes plus répétitives (Mots inconnus). Plus de contre-sens, de non-sens et de fautes de vocabulaires.
 
-- Types de fautes ne sont pas identiques
-    - TA
-        - Fautes plus répétitives (Mots inconnus)
-        - Plus de contre-sens, de non-sens et de fautes de vocabulaires
-    - TH
-        - Fautes typographiques
-        - Fautes cognitives (e.g. Norvège vs Suède)
+TH: Fautes typographiques. Fautes cognitives (e.g. Norvège vs Suède).\\
 
-- Il faut faire le moins de corrections possibles vs la meilleure qualité possible -> il faut avant tout rester rentable
-“All translation firms together are able to translate far less than 1\% of relevant content produced everyday” (Graça, EAMT 2017)
+Il faut faire le moins de corrections possibles vs la meilleure qualité possible $\rightarrow$ il faut avant tout rester rentable.\\
 
-Faits sur la post-édition
+\textbf{Faits sur la post-édition}
 
 La post-édition ferait gagner du temps, pour une qualité qui est équivalente
-20\% et 40\% (2010, Masselot et Plitt, Green et al., 2013)
+20\% et 40\% (2010, Masselot et Plitt, Green et al., 2013)\\
 
-Les meilleurs post-éditeurs seraient les traducteurs professionnels (Almeida et O’Brien, 2010 ; Carl et Buch-Kromann, 2010)
-    - Les plus rapides
-    - Plus de changements
+Les meilleurs post-éditeurs seraient les traducteurs professionnels (Almeida et O’Brien, 2010 ; Carl et Buch-Kromann, 2010). Ils sont les plus rapides et font le plus de changements.\\
 
-Beaucoup de variations entre les post-éditeurs (3000 à 9000 mots par jour)
+Beaucoup de variations entre les post-éditeurs (3000 à 9000 mots par jour).\\
 
-Types de post-édition
+\textbf{Types de post-édition}
 
 Deux types de post-édition en fonction de la qualité souhaitée
-    - Minimale (light, rapid)
-        - pour rendre le texte compréhensible
-        - Forums, textes communautaires, email, localisation, etc.
-    - Complète (full) :
-        - plus de corrections -> qualité équivalente à celle d’un texte traduit humainement
+
+\begin{itemize}
+    \item Minimale (light, rapid): pour rendre le texte compréhensible. Forums, textes communautaires, email, localisation, etc.
+    \item Complète (full): plus de corrections $\rightarrow$ qualité équivalente à celle d’un texte traduit humainement\\
+\end{itemize}
 
 Autres types de post-édition
-    Bilingue
-        Avec la source
-    Monolingue
-        Sans la source
-        Convient surtout pour la post-édition rapide
-        Tâche facile pour le crowdsourcing (Unbabel)
-    Peuvent être combinées (Morita/Ishida)
 
-Règles générales
-    - Garder le plus possible la traduction automatique
-    - Ne pas passer trop de temps sur un problème, il vaut mieux retraduire la phrase
-    - Ne pas passer de temps sur le style
-    - Corriger ce qui est incompréhensible (sens)
+\begin{itemize}
+    \item Bilingue: Avec la source
+    \item Monolingue: Sans la source. Convient surtout pour la post-édition rapide. Tâche facile pour le crowdsourcing (Unbabel)
+    \item Peuvent être combinées (Morita/Ishida)\\
+\end{itemize}
 
-Standards (guidelines): Machine Translation Post-Editing Guidelines (TAUS)
+\newpage
 
-Plusieurs questions soulevées
-- Comment mesurer l’effort de post-édition ?
-- Différences TA post-éditée vs non post-éditées ?
-- Comment aider le post-éditeur ?
+\textbf{Règles générales}
 
-Effort de postédition
+\begin{itemize}
+    \item Garder le plus possible la traduction automatique
+    \item Ne pas passer trop de temps sur un problème, il vaut mieux retraduire la phrase
+    \item Ne pas passer de temps sur le style
+    \item Corriger ce qui est incompréhensible (sens)\\
+\end{itemize}
+
+\textbf{Standards et Guidelines}
+
+Machine Translation Post-Editing Guidelines (TAUS)\\
+
+\textbf{Questions soulevées}
+
+\begin{itemize}
+    \item Comment mesurer l’effort de post-édition ?
+    \item Différences TA post-éditée vs non post-éditées ?
+    \item Comment aider le post-éditeur ?
+    \item Comment vérifier que le postéditeur fait son travail?\\
+\end{itemize}
+
+\textbf{Effort de postédition}
+
 Comprend trois types d’effort, qui interagissent
-    - de durée
-    - cognitif
-    - technique (Krings, 2001)
+
+\begin{itemize}
+    \item de durée
+    \item cognitif
+    \item technique (Krings, 2001)\\
+\end{itemize}
+
 
 Comment mesurer l’effort ?
-- Temps requis pour post-éditer un texte vs traduire
-    - mais bcp. de différence entre personnes
-- Nombre d’opérations au clavier (keystrokes, etc.)
-    - mais cert. opérations sont plus compliquées que d’autres
-- Nombre d’erreurs à corriger dans la TA
-    - mais texte de qualité moyenne serait plus difficile à post-éditer qu’un texte de mauvaise qualité (Krings)
-    - Certaines fautes sont plus problématiques que d’autres
-- Pauses, mouvement des yeux, etc.
 
-Métrique automatique : TER
-- On compare la traduction automatique (HYP) et la phrase post-éditée (REF)
-- Nombre minimum d’éditions (ajouts, suppressions, substitution de mots) pour arriver à la référence
-- Similaire au WER, mais on prend aussi en compte le déplacement de séquence.
-- Plateforme: Matecat
+\begin{itemize}
+    \item Temps requis pour post-éditer un texte vs traduire. Mais ce critère est très différent de personne à personne.
+    \item Nombre d’opérations au clavier (keystrokes, etc.). Mais certaines opérations sont plus compliquées que d’autres.
+    \item Nombre d’erreurs à corriger dans la TA. Mais un texte de qualité moyenne serait plus difficile à post-éditer qu’un texte de mauvaise qualité (Krings). Certaines fautes sont plus problématiques que d’autres.
+    \item Pauses, mouvement des yeux, etc.\\
+\end{itemize}
 
-Différences TA avec la TH ?
+\textbf{Métrique automatique: TER}
+
+\begin{itemize}
+    \item On compare la traduction automatique (HYP) et la phrase post-éditée (REF)
+    \item Nombre minimum d’éditions (ajouts, suppressions, substitution de mots) pour arriver à la référence
+    \item Similaire au WER, mais on prend aussi en compte le déplacement de séquence.
+    \item Plateforme: Matecat\\
+\end{itemize}
+
+\textbf{Différences TA avec la TH ?}
 
 Différentes études sur corpus montrent qu’il y a des différences linguistiques (Culo, Martikainen et Kubler, Toral)
-    - Moins de foisonnement en post-édition
-    - Plus de calques (syntaxiques) (structures identiques)
-    - Plus de cognates
-    - Plus de fautes graves dans la version finale (Martikainen et Kübler, 2016)
 
+\begin{itemize}
+    \item Moins de foisonnement en post-édition
+    \item Plus de calques (syntaxiques) (structures identiques)
+    \item Plus de cognates
+    \item Plus de fautes graves dans la version finale (Martikainen et Kübler, 2016)\\
+\end{itemize}
 
-Comment aider le post-éditeur
-- Pré-édition
-- Interface
-- APE
+\subsection{Comment aider le post-éditeur?}
 
-Pré-édition
+\textbf{Pré-édition}
 
-Simplifier le texte (Plain Langage, FALC)
-Réduit les erreurs de TA, mais réduit-elle l’effort ?
-    - Moins d’impact sur la NMT que la SMT ou RBMT (Aikawa, Gerlach) - Thèse de Rossetti, 2018, Simplifying, Reading, and Machine Translating Health Content: An Empirical Investigation of Usability
-    - Phrases longues, GN, etc.
+\begin{itemize}
+    \item Simplifier le texte (Plain Langage, FALC). Réduit les erreurs de TA, mais réduit-elle l’effort ?
+    \item Moins d’impact sur la NMT que la SMT ou RBMT (Aikawa, Gerlach)
+    \item Thèse de Rossetti, 2018, Simplifying, Reading, and Machine Translating Health Content: An Empirical Investigation of Usability
+    \item Phrases longues, GN, etc.\\
+\end{itemize}
 
-Interfaces spécifiques
-- pour déplacer ou inverser des mots
-- choisir entre plusieurs alternatives
-- post-édition interactive (DeepL)
+\textbf{Interfaces spécifiques}
 
-Lien avec autres technologies
-Intégration avec :
-    - les mémoires de TA
-        - Combien de traductions ? \% de correspondance ?
-    - la reconnaissance vocale
-        - http://www.aclweb.org/anthology/W14-0315
-    - les correcteurs ou outils spécifiques
+\begin{itemize}
+    \item pour déplacer ou inverser des mots
+    \item choisir entre plusieurs alternatives
+    \item post-édition interactive (DeepL)\\
+\end{itemize}
 
-APE (Automatic post-editing)
-- Les correcteurs ne sont pas très utiles, mais il faudrait refaire l’étude (Stymme and Ahrenberg, http://stp.lingfil.uu.se/~sara/papers/scl24.pdf)
-- Possibilité d’écrire des expressions régulières pour corriger les fautes les plus fréquentes (Guzman)
-- Les corrections sont directement intégrées dans les modèles
+Lien avec autres technologies. Intégration avec:
 
-Expressions régulières (REGEX !!!)
-- Suite de caractères typographiques, appelée «pattern» en anglais
-- But :
-    - décrire des ensembles de chaînes de caractères grâce à des caractères spéciaux
-    - rechercher / remplacer
+\begin{itemize}
+    \item les mémoires de TA. Combien de traductions ? \% de correspondance ?
+    \item la reconnaissance vocale
+    \item les correcteurs ou outils spécifiques\\
+\end{itemize}
 
-Impact positif
-- Gain de productivité
-    - plus de contenu traduit
-- Moins de répétitions pour le traducteur
-- De nouvelles débouchés -> recherche en postédition
-- Diversification du métier
-- Standardisation (termino, style)
+\textbf{APE (Automatic post-editing)}
 
-Impact négatif
-- On demande plus de productivité au traducteur
-- Prix de la traduction diminue
-- Moins de créativité
-- Différents niveaux de post-édition, donc qualité variable de la traduction
-- Erreurs répétitives
+\begin{itemize}
+    \item Les correcteurs ne sont pas très utiles, mais il faudrait refaire l’étude (Stymme and Ahrenberg)
+    \item Possibilité d’écrire des expressions régulières pour corriger les fautes les plus fréquentes (Guzman)
+    \item Les corrections sont directement intégrées dans les modèles\\
+\end{itemize}
+
+\textbf{Expressions régulières (Regex)}
+
+Suite de caractères typographiques, appelée «pattern» en anglais. But: décrire des ensembles de chaînes de caractères grâce à des caractères spéciaux et rechercher / remplacer.
+
+\subsection{Impacts de la postédition}
+
+\textbf{Impact positif}
+
+\begin{itemize}
+    \item Gain de productivité. Plus de contenu traduit
+    \item Moins de répétitions pour le traducteur
+    \item De nouvelles débouchés $\rightarrow$ recherche en postédition
+    \item Diversification du métier
+    \item Standardisation (termino, style)\\
+\end{itemize}
+
+\textbf{Impact négatif}
+
+\begin{itemize}
+    \item On demande plus de productivité au traducteur
+    \item Prix de la traduction diminue
+    \item Moins de créativité
+    \item Différents niveaux de post-édition, donc qualité variable de la traduction
+    \item Erreurs répétitives
+\end{itemize}
