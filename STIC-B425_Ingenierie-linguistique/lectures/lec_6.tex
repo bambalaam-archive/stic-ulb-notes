@@ -5,7 +5,7 @@
 
 \epigraph{Language is mankind's greatest invention \\- except, of course, that it was never invented!}{\textit{G. Deutscher, 2005, in "The unfolding of language"}}
 
-\textbf{Langages rationnels vs naturels}\\
+\textbf{Langages rationnels vs naturels}
 
 La grammaire naturelle est composées de règles MAIS contient de nombreuses exceptions. Il est difficile (si pas impossible) d'anticiper toutes les évolutions de la langue:
 
@@ -14,10 +14,10 @@ La grammaire naturelle est composées de règles MAIS contient de nombreuses exc
     \item néologismes
     \item langages SMS/tweets
     \item jargon technique
-    \item ...
+    \item ...\\
 \end{enumerate}
 
-\textbf{Abstraction}\\
+\textbf{Abstraction}
 
 Pour formaliser le langage naturel il est nécessaire de faire abstraction de nombreuses richesses. Ces simplifications sont nécessaires mais réductrices. Elles sont souvent limitées à un domaine précis et clos:
 
@@ -25,18 +25,21 @@ Pour formaliser le langage naturel il est nécessaire de faire abstraction de no
     \item météo
     \item réservations
     \item ELIZA
-    \item ...
+    \item ...\\
 \end{enumerate}
 
-\textbf{Exemples de langages rationnels}\\
+\textbf{Exemples de langages rationnels}
 
-\noindent Parler mouton: bê, bêê, bêêê, bêêêê\\
+Parler mouton: bê, bêê, bêêê, bêêêê
+
 Rires: haha!, hihihi, hahahaha!
 
 \subsection{Grammaires régulières}
 
-Règles de réécriture: constituant $\rightarrow$ constitué\\
-Majuscules = symboles; minuscules = littéraux\\
+Règles de réécriture: constituant $\rightarrow$ constitué
+
+Majuscules = symboles; minuscules = littéraux
+
 Règles récursives: même symbole utilisé à gauche et à droite de la flèche de réécriture\\
 
 Exemple du parler mouton:
@@ -47,26 +50,27 @@ $ Y \rightarrow \hat e Y $
 
 $ Y \rightarrow \hat e $
 
-\subsection{Expressions régulières}
+\subsection{Expressions régulières (regex)}
 
-Permettent d'exprimer des grammaires régulières de manière plus concise.\\
+Permettent d'exprimer des grammaires régulières de manière plus concise.
+
 Sujet complexe et vaste, syntaxe ésotérique.\\
 
 Exemples:
 
-/bê+/\\
-/h[ai](h[ai])+  !?/\\
-/\textbackslash b[A-Z0-9.\_\%+-]+@[A-Z0-9-.]+\textbackslash .[A-Z]\{2,\}\textbackslash b/\\
+/bê+/ (parler mouton)
 
-Exercices online:
+/h[ai](h[ai])+  !?/ (rires)
 
-http://regex.sketchengine.co.uk/
+/\textbackslash b[A-Z0-9.\_\%+-]+@[A-Z0-9-.]+\textbackslash .[A-Z]\{2,\}\textbackslash b/ (détection d'adresse email)\\
+
+Exercices online: \url{http://regex.sketchengine.co.uk/}
 
 Solutions:
 
-1 - p.t
-2 - ap.?t
-3 - af+g.?k
+1 - p.t /
+2 - ap.?t /
+3 - af+g.?k /
 4 - [a-z][.?!]['")]? +[A-Z]
 
 \subsection{Automates finis}
@@ -75,141 +79,168 @@ FSA: Finite-State Automata (pluriel de Automaton)
 
 Automate à nombre fini d'états (pas à états finis!)
 
-Les transitions d'un état à un autre sont soumises à la satisfaction d'une condition
+Les transitions d'un état à un autre sont soumises à la satisfaction d'une condition.
 
-États $\rightarrow$ cercles
-    état initial (triangle/flèche isolée)
-    états intermédiaires
-    état final (double cercle)
-Transitions (flèches)
-    d'un état à un autre
-    d'un état à lui-même (récursif)
-    transition lambda/epsilon (vide)
+\vspace{0.5cm}
 
-Déterministe vs non-déterministe
+\begin{center}
+\resizebox{0.50\textwidth}{!}{
+    \input{images/lec6_tikz1.tex}
+}
+\end{center}
 
-Équivalences
+\vspace{0.5cm}
 
-    Trois manières d'exprimer la même chose:
+\begin{minipage}[t]{0.6\textwidth}
+États: représentés par des cercles
 
-        Regular languages
+- État initial (triangle/flèche isolée)
 
+- États intermédiaires
 
-\section{Morphologie}
+- État final (double cercle)\\
+\end{minipage}
+\begin{minipage}[t]{0.8\textwidth}
+Transitions: représentées par des flèches
 
-Morphologie permets soit de gérer des variantes de mots (flexionelle) soit de construire des nouveaux mots.
+- D'un état à un autre
 
-Au niveau de la construction, on peut soit faire une dérivation (en conservant ou changeant la catégorie du mot) soit faire de la composition (noms composés, adjectifs composés, verbes composés, adverbes composés)
+- D'un état à lui-même (récursif)
 
-Transducteur
+- Transition lambda/epsilon (vide)\\
+\end{minipage}
 
-    FST: Finite-state transducers
+\begin{center}
+\resizebox{0.6\textwidth}{!}{
+    \input{images/lec6_tikz2.tex}
+}
+\end{center}
 
-    Similaires aux FSA mais la condition pour passer d'un état à un autre est remplacée par une action à effectuer
+\textbf{Déterministe vs non-déterministe}
 
-    Utilisés soit pour analyser une chaine existante soit pour générer une chaîne à partir de traits
+Après avoir reconnu "abb", sommes-nous à l'état final ou bien toujours à l'état initial? Impossible à dire avec certitude.
 
-Exemple
+\begin{center}
+\resizebox{\textwidth}{!}{
+    \input{images/lec6_tikz3.tex}
+}
+\end{center}
 
-Racinisation (stemming)
-    Version simplifiée de l'analyse morphologique
-    Ne s'encombre pas du lexique: principalement basée sur la désuffixation (vs lemmatisation)
-    Moins précise mais beaucoup plus rapide
-    Très utilisée par les moteurs de recherche
+\newpage
 
-Porter stemmer
-    Martin Porter (1980)
-    Ensemble de règles simples en cascade:
-        SSES -> SS
-        ING -> epsilon
-        ATIONAL -> ATE
-    Mais, ce n'est pas hyper précis, il y a de nombreux problèmes:
-        organization -> organ (sens perdu)
-        policy -> police (sens perdu)
-        Adobe Illustrator -> illustrate (nom propre a un sens particulier)
+\subsection{Équivalences}
 
+On a décrit trois manières d'exprimer la même chose: les langages rationnels/réguliers/reconnaissables.
 
-Segmentation (tokenization)
-    Séparation d'un texte en phrases et des phrases en mots
-    Étape cruciale pour le succès des states suivants (analyse morphologique, traduction automatique, etc)
+\begin{center}
+\resizebox{0.6\textwidth}{!}{
+    \input{images/lec6_tikz4.tex}
+}
+\end{center}
 
-Séparation en phrases:
-    Approche naïve: séparation par un point suivi d'un espace. Mais malheureusement cela ne couvre absolument pas tous les cas.
+\subsection{Morphologie}
 
-Parts of Speech:
-    Noun Pronoun Verb
-    Adjective Article Adverb
-    Preposition Conjunction Interjection
-    .......
+La morphologie permet soit de gérer des variantes de mots (morphologie flexionelle) soit de construire des nouveaux mots. \\
 
-    Les petites poules du couvent les couvent bien
+Au niveau de la construction, on peut soit faire une dérivation ("affixation", en conservant ou changeant la catégorie du mot) soit faire de la composition (noms composés, adjectifs composés, verbes composés, adverbes composés). \\
 
-    Les: DET
-    petites: ADJ
-    poules: NOM
-    du: PREP
-    couvent: NOM
-    les: PRON
-    couvent: VB
-    bien: ADV
+\subsection{Transducteurs}
 
-Tagsets
-    Listes des "parties du discours" (catégories)
-    Granularités très variables:
-        French Treebank: 15 catégories grammaticales
-        Penn Treebank: 36 (45 avec la ponctuation)
-        C5: 67
-        Brown: 87
-        Sinica (chinois): 294 (!!!)
+FST: Finite-state transducers.\\
 
-PoS tagging
-    Étiquetage morpho-syntaxique/grammatical
+Similaires aux FSA mais la condition pour passer d'un état à un autre est remplacée par une action à effectuer. Utilisés soit pour analyser une chaine existante, soit pour générer une chaîne à partir de traits.\\
 
-    Trois approches principales:
-        linguistiques (règles)
-        statistique (HMM - hidden markov models, Viterbi)
-        transformative (Brill tagger)
+\subsection{Stemming}
 
-Taggers linguistiques
-    Choix parmi les différents candidats trouvés dans un dictionnaire
-    Basés sur une succession de règles
-    Exemple pour l'anglais: ENGTWOL
+\textbf{Racinisation (stemming)}
 
-    Regles complexes:
-    e.g. "Adverbial-that rule"
-    tout ça n'a enlevé qu'un des 4 cas possibles
+Version simplifiée de l'analyse morphologique. Ne s'encombre pas du lexique: principalement basée sur la désuffixation (vs lemmatisation). Moins précise mais beaucoup plus rapide. Très utilisée par les moteurs de recherche.\\
 
+\textbf{Porter stemmer}
 
-HMM taggers
-    Approche probabiliste basée sur le modèle bayésien d'inférence (1763)
-    Hidden Markov Model
-    (...)
+Crée par Martin Porter (1980). Ensemble de règles simples en cascade, par exemple:
 
-    Prémisses simplificatrices:
-        la probabilité d'un mot ne dépend pas du contexte (faux, mais c'est pour simplifier)
-        la probabilité d'un tag ne dépend que du précédent (modèle des bigrammes)
+\begin{itemize}
+    \item SSES $\rightarrow$ SS
+    \item ING $\rightarrow$ epsilon
+    \item ATIONAL $\rightarrow$ ATE\\
+\end{itemize}
 
-    Approximation = produit entre:
-        la probabilité d'un mot hors contexte (fréquence) pour un tag donné
-        la probabilité de transition d'un tag à un autre
+Mais, ce n'est pas hyper précis, il y a de nombreux problèmes, comme par exemple:
 
+\begin{itemize}
+    \item organization $\rightarrow$ organ (sens perdu)
+    \item policy $\rightarrow$ police (sens perdu)
+    \item Adobe Illustrator $\rightarrow$ illustrate (nom propre a un sens particulier)\\
+\end{itemize}
 
-Brill tagger
-    Approche hybride basée sur des règles ET un entrainement statistique (machine learning)
+\subsection{Segmentation (tokenization)}
 
-    Technique supervisée: nécessite un corpus annoté manuellement pour l'apprentissage
+Séparation d'un texte en phrases et des phrases en mots. Étape cruciale pour le succès des stades suivants (analyse morphologique, traduction automatique, etc).\\
 
-    Première approximation probabiliste puis règles de transformation
+\textbf{Séparation en phrases}
 
-LatlApps
-    Outils minimalistes de type HMM
-        Syntactic analysis (UniversalTagger / French)
-        Machine translation (Text / fr-en)
-    Tâches sous-jacentes à évaluer
-        Segmentation lexicale (tokenization)
-        Analyse morphologique (PoS tagging + guessing)
-        Désambiguïsation (WSD)
+Approche naïve: séparation par un point suivi d'un espace. Mais malheureusement cela ne couvre absolument pas tous les cas.\\
 
-Exercises
-    (....)
+\textbf{Parts of Speech}
 
+Les petites poules du couvent les couvent bien \\
+
+\begin{minipage}[t]{0.5\textwidth}
+\begin{itemize}
+\item Les: DET
+\item petites: ADJ
+\item poules: NOM
+\item du: PREP
+\end{itemize}
+\end{minipage}
+\begin{minipage}[t]{0.5\textwidth}
+\begin{itemize}
+ \item couvent: NOM
+\item les: PRON
+\item couvent: VB
+\item bien: ADV
+\end{itemize}
+\end{minipage}
+
+\subsection{Tagging}
+
+\textbf{Tagsets}
+
+Listes des "parties du discours" (catégories)\\
+
+Granularités très variables:
+\begin{itemize}
+    \item French Treebank: 15 catégories grammaticales
+    \item Penn Treebank: 36 (45 avec la ponctuation)
+    \item C5: 67
+    \item Brown: 87
+    \item Sinica (chinois): 294!\\
+\end{itemize}
+
+\textbf{PoS tagging}
+
+Étiquetage morpho-syntaxique/grammatical.
+
+Trois approches principales:
+\begin{itemize}
+    \item linguistiques (règles)
+    \item statistique (HMM - hidden markov models, Viterbi)
+    \item transformative (Brill tagger)\\
+\end{itemize}
+
+\textbf{Taggers linguistiques}
+
+Choix parmi les différents candidats trouvés dans un dictionnaire. Basés sur une succession de règles très complexes. Exemple pour l'anglais: ENGTWOL.\\
+
+\textbf{HMM taggers}
+
+Approche probabiliste basée sur le modèle bayésien d'inférence (Hidden Markov Model - 1763). Choix de la séquence de tags la plus probable parmi toutes les séquences possibles, en fonction des mots observés.
+
+Prémisses simplificatrices: la probabilité d'un mot ne dépend pas du contexte (faux, mais c'est pour simplifier); la probabilité d'un tag ne dépend que du précédent (modèle des bigrammes)
+
+Approximation = produit entre: la probabilité d'un mot hors contexte (fréquence) pour un tag donné; la probabilité de transition d'un tag à un autre\\
+
+\textbf{Brill tagger}
+
+Approche hybride basée sur des règles ET un entrainement statistique (machine learning). Technique supervisée: nécessite un corpus annoté manuellement pour l'apprentissage. Première approximation probabiliste puis règles de transformation.
