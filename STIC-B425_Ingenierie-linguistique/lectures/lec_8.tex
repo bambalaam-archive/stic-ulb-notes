@@ -3,17 +3,209 @@
 
 \section{Aspects sémantiques}
 
+\textbf{Sémantique}: Dérivé du grec ancien \textgreek{σημαντικός} (sêmantikos) "signifié" \\
 
-Exercices
+Postulat : le sens d'une expression linguistique peut être capturé par une structure formelle. Comme pour les aspects morpho-lexicaux et syntaxiques, nous utiliserons des langages de représentation sémantique.\\
 
-« Le Gauguin est un bar » : Bar(Gauguin)
+\textbf{Compréhension}
 
-« Le Snack 44 sert des sandwiches » : Servir(Snack 44, Sandwiches)
+La représentation morpho-syntaxique d'un texte est souvent insuffisante pour:
 
-« Je veux manger en terrasse, ou alors pas cher » : Vouloir(Locuteur, x) AND Restaurant(x) AND ( Avoir(x, Terrasse) OR NOT Etre(x, Cher) )
+\begin{itemize}
+    \item Répondre aux questions d'un examen
+    \item Décider quel plat commander au restaurant
+    \item Comprendre un manuel d'utilisation
+    \item Réaliser qu'on a été insulté
+    \item Suivre une recette de cuisine...
+\end{itemize}
 
-« J'aime les restos italiens et japonais » : Restaurant(x, Italien) OU Restaurant(x, Japonais)
+\subsection{Prérequis}
 
-« Peut-on trouver un restaurant végétarien à Ixelles ? » : Exists x: Restaurant(x) AND Type(x, Vegetarien) AND CodePostal(x, 1050)
+Exemple: système automatique de recommandation de restaurants pour étudiants Erasmus \\
 
-« Les cafés du Cimetière sont proches de l'ULB » : Pourtout x Cafe(x) : Proche(x, Cimetiered'Ixelles) -> Distance(x, ULB) < 5km
+\textbf{Vérifiabilité}
+
+Exemple: "Le Campouce sert-il des pizzas ?"
+
+Servir(Campouce, Pizzas) $\rightarrow$ Oui / Non / Je ne sais pas \\
+
+Relation entre une phrase et la réalité : valeur de vérité d'une représentation. Vérification à l'aide d'une base de connaissance.\\
+
+\textbf{Non-ambiguïté}
+
+Exemple: "J'aimerais manger au Cimetière" \\
+
+La pertinence de la réponse dépendra de l'interprétation choisie par le système. L'absence d'ambiguïté n'est pas incompatible avec un certain degré d'imprécision/implicite.\\
+
+\textbf{Forme canonique}
+
+Exemple:
+
+"Y a-t-il des pizzas au Campouce ?" / "Le menu du Campouce inclut-il des pizzas ?"/ "Peut-on manger une pizza au Campouce ?"\\
+
+Syntaxe très différente mais sens similaire. Représentation unique (simplification). Word sense disambiguation\\
+
+\textbf{Inférence}
+
+Exemple:
+
+"Les amateurs de pizzas peuvent-ils trouver leur bonheur au Campouce ?"
+
+Capacité à tirer des conclusions valides à propos de propositions non-explicites. \\
+
+"J'aimerais trouver un restaurant où manger une pizza dans les alentours de l'unif."
+
+Servir(x, Pizzas)
+
+Proche(x, ULB)\\
+
+\textbf{Expressivité}
+
+Exemple: "En cas de fringale, où puis-je me sustenter dans les parages de mon Alma Mater?"\\
+
+Un langage de représentation sémantique doit être suffisamment expressif pour modéliser n'importe quel énoncé linguistique. Mais c'est probablement trop utopique pour l'instant?\\
+
+\subsection{Logique du premier ordre}
+
+First-Order Logic (FOL). Langage de représentation remplissant les cinq prérequis énoncés plus haut.\\
+
+Exemple: LeftOf(x, y)
+
+Termes (objets, x et y) et relations (prédicats, LeftOf)\\
+
+\textbf{Termes}
+
+Représentation d'objets du réel:
+
+\begin{itemize}
+    \item Constantes: Campouce, Pizzas, Cimetière
+    \item Fonctions: Commune(ULB), Origine(Pizzas)
+    \item Variables: x,y (objets anonymes ou génériques)\\
+\end{itemize}
+
+\textbf{Relations}
+
+Prédicats liant plusieurs objets entre eux:
+
+\begin{itemize}
+    \item Servir(Campouce, Pizzas)
+    \item Proche(ULB, Cimetière d'Ixelles)\\
+\end{itemize}
+
+Aussi utilisé pour encoder une catégorie: Restaurant(Campouce)\\
+
+\textbf{Connecteurs logiques}
+
+"Je n'ai que 5€ \textbf{et} pas beaucoup de temps."
+
+$ \text{Avoir(Locuteur, CinqEuros)} \land \neg \text{Avoir(Locuteur, BeaucoupDeTemps)}$ \\
+
+"J'aimerais manger chinois \textbf{ou} grec."
+
+$ \text{Vouloir(Locuteur,NourritureChinoise)} \lor \text{Vouloir(Locuteur, NourritureGrecque)}$ \\
+
+\textbf{Quantificateurs}
+
+\hspace{2cm} $\exists \text{: il existe}$ \hspace{2cm} $\forall \text{: pour tout}$\\
+
+"Une pizzeria dans le coin du Cimetière"
+
+$\exists x: \text{Restaurant(x)} \land \text{Servir(x, Pizzas)} \land \text{Proche(x, Cimetière\_d'Ixelles)}$\\
+
+"Toutes les pizzerias servent des pizzas."
+
+$ \forall x: \text{Pizzeria(x)} \rightarrow \text{Servir(x, Pizzas)} $ \\
+
+\textbf{Exercices}
+
+« Le Gauguin est un bar » : $$Bar(\text{"Gauguin"})$$
+
+« Le Snack 44 sert des sandwiches » : $$Servir(\text{"Snack 44"}, Sandwiches)$$
+
+« Je veux manger en terrasse, ou alors pas cher » : $$Vouloir(Locuteur, x) \land Restaurant(x) \land ( Avoir(x, Terrasse) \lor \neg Etre(x, Cher) )$$
+
+« J'aime les restos italiens et japonais » : $$Restaurant(x, Italien) \lor Restaurant(x, Japonais)$$
+
+« Peut-on trouver un restaurant végétarien à Ixelles ? » : $$ \exists x: Restaurant(x) \land Type(x, Vegetarien) \land CodePostal(x, 1050) $$
+
+« Les cafés du Cimetière sont proches de l'ULB » : $$ \forall x Cafe(x) : Proche(x, \text{"Cimetiere d'Ixelles"}) \rightarrow Distance(x, \text{"ULB"}) < 5km $$
+
+\newpage
+
+\subsection{Applications}
+
+\textbf{Sémantique lexicale}
+
+Capitaliser les mots comme Restaurant ou Pizzas ne suffit pas pour capturer leur sens.\\
+
+Un peu de vocabulaire:
+
+\begin{itemize}
+    \item Lexème : couple (forme + signification)
+    \item Lexique : ensemble de lexèmes
+    \item Lemme : forme dictionnaire\\
+\end{itemize}
+
+Rappel : lemmatisation VS racinisation\\
+
+\textbf{Sens des mots}
+
+\begin{itemize}
+\item \textbf{Homonymie:} mots qui ont la même forme orale ou écrite mais des sens différents
+\item \textbf{Polysémie:} mot ou expression qui a plusieurs sens ou significations différentes
+\item \textbf{Métonymie:} utilise un mot pour signifier une idée distincte mais qui lui est associée
+\item \textbf{Homophonie:} identité de sons représentés par des signes différents.
+\item \textbf{Homographie:} mots qui s'écrivent de la même manière, tout en se prononçant ou non de façon différente\\
+\end{itemize}
+
+\textbf{Relations sémantiques}
+
+\begin{itemize}
+\item \textbf{Synonymie:} relation entre deux signifiants et un seul signifié
+\item \textbf{Antonymie:} mot qui a un sens opposé à un autre
+\item \textbf{Hyponymie / Hyperonymie / Taxonomie:} relation sémantique d'un lexème à un autre selon laquelle l'extension du premier est incluse dans l'extension du second
+\item \textbf{Méronymie:} relation sémantique entre mots, lorsqu'un terme désigne une partie d'un second terme\\
+\end{itemize}
+
+\textbf{Synset}
+
+Ensembles de quasi-synonymes liés à un sens
+
+Correspond à un concept du réel, distinct de sa réalisation linguistique (cf. arbitraire du signe)
+
+Définition en extension (liste de mots) et en compréhension (glose)
+
+Taxonomie = arbre des hyperonymes\\
+
+\textbf{Word Sense Disambiguation}
+
+Tâche qui consiste à examiner des mots en contexte et à déterminer le sens de chacun
+
+Sous-discipline majeure du TAL au vu des enjeux liés à la désambiguïsation sémantique:
+
+Exemple:
+\begin{itemize}
+    \item Traduction automatique (avocat → avocado/lawyer)
+    \item Recherche d'information en ligne (jaguar vs Jaguar)
+    \item Synthèse vocale (signe des temps vs cygne d'étang)\\
+\end{itemize}
+
+\textbf{Approche supervisée}
+
+Échantillon lexical présélectionné : mots et sens associés dans un lexique
+
+Nombre limité de possibilités (cibles pour l'apprentissage automatique)
+
+Corpus annoté à la main pour les différents sens
+
+Limite: algorithme spécifique à chaque mot\\
+
+\textbf{Approche non supervisée}
+
+Désambiguïsation de tous les mots d'un texte à partir d'un lexique (e.g. WordNet)
+
+Similaire au POS tagging, mais avec un tagset beaucoup plus étendu (un par lemme)
+
+Plus robuste mais nécessite énormément de données pour capturer les nuances
+
+Limite : il est peu probable que le corpus d'entraînement contienne tous les mots\\
