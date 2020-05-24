@@ -1,101 +1,181 @@
 \lecture{4}{vendredi 21 février 2020}
 \vspace{-1.2cm}
 
-\subsection{Les systèmes de TA neuronaux (NMT)}
+\subsection{NMT}
 
-Dernière génération des systèmes de TA
+Dernière génération des systèmes de TA \\
 
-2016: GT lance le 1er sys neuronal sur le web
-2017: DeepL
-Aujourd'hui: presque tous les systèmes sur internet sont neuronaux sauf Yandex (hybride SMT/NMT) et Apertium (RBMT)
-2019: Reverso (Reverso Corporate)
+\begin{itemize}
+    \item 2016: GT lance le 1er système neuronal sur le web
+    \item 2017: DeepL
+    \item Aujourd'hui: presque tous les systèmes sur internet sont neuronaux sauf Yandex (hybride SMT/NMT) et Apertium (RBMT)
+    \item 2019: Reverso (Reverso Corporate)\\
+\end{itemize}
 
-Plateforme open source
-OpenNMT
+Plateforme open source: OpenNMT
 
-Plateforme commerciale
-Custom Translator (Microsoft)
+Plateforme commerciale: Custom Translator (Microsoft)\\
 
-Performance
-Study by Google in 2017
+Étude par Google en 2017 sur la qualité des systèmes NMT. Il faut garder un oeil critique sur les études de performance, surtout celles venant de l'industrie \\
 
-Il faut garder un oeil critique sur les études de performance, surtout celles venant de l'industrie
+\textbf{Caractéristiques}
 
-NMT - Caractéristiques
-- Apprentissage profond ("deep learning")
-- Ne reste plus au niveau des mots, mais représente le sens des mots/phrases avec des plongements (embeddings)
+\begin{itemize}
+    \item Apprentissage profond ("deep learning")
+    \item Ne reste plus au niveau des mots, mais représente le sens des mots/phrases avec des plongements (embeddings)\\
+\end{itemize}
 
-Résultat
-- Beaucoup plus de généralisations
-- Traduit sur base du sens, plus une traduction fragmentée
+\textbf{Résultat}
 
-Plongement lexical
-    Représentation numérique distribuée
-    Distribuée : chaque mot est situé par rapport aux autres dans un espace multidimensionnel sur base de sa distribution dans le corpus
+\begin{itemize}
+    \item Beaucoup plus de généralisations
+    \item Traduit sur base du sens, plus une traduction fragmentée\\
+\end{itemize}
 
-Hypothèse distributionnelle
-    L. Wittgenstein (1889-1951)
-        Le sens d’un mot vient de son usage
-    «You shall know a word by the company it keeps»
-        Firth (1890-1960)
-    Si deux mots apparaissent dans le même contexte, ils ont le même sens (Harris, 58)
+\textbf{Étapes}
 
-Plongement lexical
-    Représentation numérique distribuée
-    Numérique : vecteur, liste de chiffres, 1 point dans l’espace
-    Représentation vectorielle, un mot = un vecteur (une liste de chiffres dans l'espace)
+Encodage
 
-Vecteurs denses (???where is the slide???)
+\begin{itemize}
+    \item Un réseau de neurones lit les mots un par un (les vecteurs un par un)
+    \item Construit la représentation de la phrase (représentation des mots dans le contexte)\\
+\end{itemize}
 
-Relations sémantiques
-    Plongements encodent les relation sémantiques
-    Même distance pour les mêmes relations
+Décodage
 
-Opérations sur les mots
-    Semantic Arithmetics
-    VS
-    Composition de vecteurs
+\begin{itemize}
+    \item Un autre réseau de neurones génére les mots cible un à un
+    \item Cherche la probabilité, étant donné le plongement de la phrase en anglais, d'avoir le premier mot de la phrase en espagnol en ayant le plongement en anglais $P( X_{word} | embeddings)$\\
+\end{itemize}
 
-Examples:
-    Word2Vec (python)
-    WV Demo
+\textbf{Plongement lexical}
 
-Deux étapes dans la traduction neuronale
-    1er - Encodage
-        Un réseau de neurones
-        Lit les mots un par un (les vecteurs un par un)
-        Construit la représentation de la phrase (représentation des mots dans le contexte)
-    2eme - Décodage
-        Un autre réseau de neurones
-        Génére les mots cible un à un
-        Cherche la prob, étant donné le plongement de la phrase en anglais, d'avoir le premier mot de la phrase en espagnol en ayant le plongement en anglais $P( X_{word} | embeddings)$
+\begin{itemize}
+    \item Représentation numérique distribuée
+    \item Distribuée : chaque mot est situé par rapport aux autres dans un espace multidimensionnel sur base de sa distribution dans le corpus
+    \item Numérique : vecteur, liste de chiffres, 1 point dans l’espace. Représentation vectorielle, un mot = un vecteur (une liste de chiffres dans l'espace)\\
+\end{itemize}
 
-NMT vs SMT: Architecture
-    Similaire à la représentation vue précédemment dans le cours
-    Triangle de ???
+\textbf{Hypothèse distributionnelle}
 
-SMT vS NMT: Qualité
-    Traduction beaucoup plus fluide
-        -Moins de fautes grammaticales (car il ne s'agit pas d'une traduction par segment)
-        -Plus de fautes sémantiques
-            - Les erreurs sont sémantiques motivées ("cappucino à la place de expresso")
-        -Plus d'omissions mais moins de non-sens
-        -Galère avec les Mots inconnus
+\begin{itemize}
+    \item L. Wittgenstein (1889-1951): Le sens d’un mot vient de son usage
+    \item Firth (1890-1960): "You shall know a word by the company it keeps"
+    \item Harris (1958): Si deux mots apparaissent dans le même contexte, ils ont le même sens \\
+\end{itemize}
 
-Challenges
-    Phrases longues
-    Mots rares ou inconnus
-    Taille des données
+\textbf{Relations sémantiques}
 
-Limites informatiques
-    Demande beaucoup de textes
-    Demande des mémoires particulières (GPU, graphic processing unit)
+\begin{itemize}
+    \item Plongements encodent les relation sémantiques
+    \item Même distance pour les mêmes relations\\
+\end{itemize}
 
-TP: SMT ou NMT?
-    01: First one is SMT because it kept the unknown word the same
-    02: Reformulation de la phrase dans NMT, Statistique garde l'ordre des mots. Fluide mais l'apparition du féminin ne fait pas de sens.
-    04: Again, traduction of unknown word in NMT. SMT broke and translated wrongly the end of the sentence.
-    05: NMT translated strangely "héritée" and "anticipée".
-    09: NMT didn't know the word so it says "entity" (lol)
-    14: ABOUT USING -> SUR UTILISANT HAHAHA
-    17:
+
+\textbf{Opérations sur les mots}
+
+Semantic Arithmetics VS Composition de vecteurs \\
+
+Semanting Arithmetics: \\
+
+[[king]] – [[man]] + [[woman]] = [[queen]]
+
+[[Paris]] – [[France]] + [[Allemagne]] = [[Berlin]]\\
+
+Composition de vecteurs: \\
+
+vecteur(king) - vecteur(man) + vecteur(woman) = vecteur(queen)\\
+
+\textbf{SMT vS NMT: Qualité}
+
+Traduction beaucoup plus fluide
+
+\begin{itemize}
+    \item Moins de fautes grammaticales (car il ne s'agit pas d'une traduction par segment)
+    \item Plus de fautes sémantiques. Les erreurs sont sémantiquement motivées ("cappucino à la place de expresso")
+    \item Plus d'omissions mais moins de non-sens
+    \item A du mal avec les mots inconnus\\
+\end{itemize}
+
+\textbf{Challenges}
+
+\begin{itemize}
+    \item Phrases longues
+    \item Mots rares ou inconnus
+    \item Taille des données\\
+\end{itemize}
+
+\textbf{Limites informatiques}
+
+\begin{itemize}
+    \item Demande beaucoup de textes
+    \item Demande des mémoires particulières (GPU, graphic processing unit)\\
+\end{itemize}
+
+\subsection{Exercices}
+
+Détecter laquelle des traductions est issue d'un SMT et laquelle d'un NMT.\\
+
+\textbf{Exercice 1:}\\
+
+\begin{table}[H]
+\begin{tabular}{|l|ll}
+\cline{1-1}
+\textbf{Source} & & \\ \hline
+Strensiq (asfotase alfa) & \multicolumn{1}{l|}{Strensiq (asfotase alfa)} & \multicolumn{1}{l|}{Stensiq ( asfotase alfa)} \\ \hline
+\end{tabular}
+\end{table}
+
+Réponse: La première est SMT car il a gardé le mot inconnu (Strensiq) inchangé.\\
+
+\textbf{Exercice 2:}\\
+
+\begin{table}[H]
+\begin{tabular}{|l|ll}
+\cline{1-1}
+\textbf{Source} &  &  \\ \hline
+\begin{tabular}[c]{@{}l@{}}An overview of Strensiq and \\ why it is authorised in the EU\end{tabular} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}présentation de Stensiq et des raisons\\ pour lesquelles elle est agréée dans l’UE\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Une vue d’ensemble de Strensiq et\\ pourquoi il est autorisé dans l’UE\end{tabular}} \\ \hline
+\end{tabular}
+\end{table}
+
+Réponse: Reformulation de la phrase dans la première traduction (NMT). Fluide mais l'apparition du féminin ne fait pas de sens. SMT garde l'ordre des mots.\\
+
+\newpage
+
+\textbf{Exercice 3:}\\
+
+\begin{table}[H]
+\hspace{-2cm}
+\begin{tabular}{|l|ll}
+\cline{1-1}
+\textbf{Source}  &  & \\ \hline
+\begin{tabular}[c]{@{}l@{}}Strensiq is a medicine used long-term \\ to treat patients with hypophosphatasia \\ that started in childhood.\end{tabular} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Strensiq est un médicament utilisé pour le\\ traitement à long terme des patients \\ atteints de hypophosphatasia \\ que prescrit chez l’enfant.\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Stensiq est un médicament utilisé\\ à long terme pour traiter les patients\\ atteints d’hypophosphite d’hyposie\\ qui ont commencé à l’enfance.\end{tabular}} \\ \hline
+\end{tabular}
+\end{table}
+
+Réponse: La première traduction est SMT, la deuxième NMT. Encore une fois, NMT a essayé de traduire un mot inconnu (hypophosphatasia), tandis que SMT l'a laissé inchangé. SMT a également traduit de façon incorrecte la fin de la phrase.\\
+
+\textbf{Exercice 4:}\\
+
+\begin{table}[H]
+\begin{tabular}{|l|ll}
+\cline{1-1}
+\textbf{Source} & & \\ \hline
+How is Strensiq used? & \multicolumn{1}{l|}{Comment cette entité est-elle utilisée?} & \multicolumn{1}{l|}{Comment Strensiq est-il utilisé?} \\ \hline
+\end{tabular}
+\end{table}
+
+Réponse: NMT pour la première traduction, SMT pour la deuxième. NMT ne connaissant pas le mot inconnu l'a traduit par "entité".\\
+
+\textbf{Exercice 5:}\\
+
+\begin{table}[H]
+\hspace{-1cm}
+\begin{tabular}{|l|ll}
+\cline{1-1}
+\textbf{Source} & & \\ \hline
+\begin{tabular}[c]{@{}l@{}}For more information about using\\ Strensiq, see the package leaflet\end{tabular} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Pour de plus amples informations\\ sur l’utilisation de Stensiq, voir la notice\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Pour plus d’informations sur utilisant \\ Strensiq, voir la notice\end{tabular}} \\ \hline
+\end{tabular}
+\end{table}
+
+Réponse: NMT pour la première traduction, SMT pour la deuxième. SMT a fait une traduction littérale de l'expression "about using", la traduisant en "sur utilisant".\\
