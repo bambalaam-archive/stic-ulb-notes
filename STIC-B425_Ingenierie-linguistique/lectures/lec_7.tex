@@ -3,64 +3,148 @@
 
 \section{Aspects syntaxiques}
 
-Skip to 15:25 for interesting part
+\textbf{Syntaxe}: Du grec ancien \textgreek{σύνταξις} (súntaxis) qui signifie "arrangement" ou "mise en ordre". Façon dont les mots se combinent pour former des phrases structurées. Unité syntaxique = syntagme (groupe de mots).\\
 
-Syntaxe
+\textbf{Structure en arbre}
 
-    Du grec ancien %σύνταξις (súntaxis) qui signifie « arrangement » ou « mise en ordre »
+\begin{center}
+\resizebox{0.6\textwidth}{!}{
+    \input{images/lec7_tikz1.tex}
+}
+\end{center}
 
-    Façon dont les mots se combinent pour former des phrases structurées
+\textbf{Structure plate (crochets)}
 
-    Unité syntaxique = syntagme (groupe de mots)
+[P [SN Jean ] [SV [V donne ] [<SN,SP>AND<SN,SP> [<SN,SP> [SN un couteau ] [SP à la fille ] ] [et ] [<SN,SP> [SN une pièce ] [SP au garçon ] ] ] ] ] \\
 
-Grammaire context-free (CFG)
+\textbf{Constituants}
 
-    Simplification du langage naturel mais plus flexible qu'une grammaire régulière
+P (S) phrase (symbole de départ)
 
-    Permet de modéliser les relations entre constituants
+SN (NP) syntagme nominal
 
-    Ensemble de règles pour organiser symboles grammaticaux et unités lexicales
+SV (VP) syntagme verbal
 
-    Génération et analyse (parsing)
+SP (PP) syntagme prépositionnel
 
-Grammaire générative
+N nom
 
-    Un sous-langage est défini par l'ensemble des phrases générées par la grammaire
+V verbe
 
-    Puissance générative : une infinité de phrases peut être générée par un ensemble fini de règles
+Prep préposition\\
 
-    Équilibre à trouver entre sous-génération (silence) et sur-génération (bruit)
+\textbf{Grammaire context-free (CFG)}
 
-Treebanks
+Simplification du langage naturel mais plus flexible qu'une grammaire régulière. Permet de modéliser les relations entre constituants. Ensemble de règles pour organiser symboles grammaticaux et unités lexicales. Génération et analyse (parsing).\\
 
-    Corpus de textes annotés avec leurs structures syntaxiques correspondantes
+Exemple: \\
 
-    Révolution pour le TAL !
+S $\rightarrow$ NP VP
 
-    Penn Treebank (1992)
-    French Treebank (1997)
+NP $\rightarrow$ 'the man' | 'the book'
 
-Parsing (analyse grammaticale)
-    Tâche qui consiste à reconnaître une phrase et à y assigner une structure syntaxique
+VP $\rightarrow$ Verb NP
 
-    Applications diverses
-        correction grammaticale
-        traduction automatique
-        question answering
+(VP $\rightarrow$ Verb)
 
-    Recherche de l'arbre correct parmi l'ensemble des arbres possibles (cf. treebanks)
-
-Stratégies de recherche
-    « Marie voit un chat. »
-
-    Deux contraintes
-        grammaticale : former une phrase (symbole P)lexicale : utiliser les quatre mots dans l'ordre
-    Deux approches
-        top-down : en partant de l'objectif à atteindre
-        bottom-up : en partant des données à utiliser
+Verb $\rightarrow$ 'took' | 'read' \\
 
 
-(.....)
+\textbf{Grammaire générative}
 
-Exercice 4
+Un sous-langage est défini par l'ensemble des phrases générées par la grammaire. Puissance générative : une infinité de phrases peut être générée par un ensemble fini de règles. Équilibre à trouver entre sous-génération (silence) et sur-génération (bruit). \\
 
+\textbf{Treebanks}
+
+Corpus de textes annotés avec leurs structures syntaxiques correspondantes. Une révolution pour la TAL! \\
+
+Exemples: Penn Treebank (1992) et French Treebank (1997)\\
+
+(SENT (NP-SUJ (D La) (N diminution)) (VN (V
+paraît)) (PONCT ,) (ADV toutefois) (PONCT ,) (AP-
+ATS (ADV moins) (A nette)) (PP-MOD (P en) (NP
+(N France)) (COORD (C et) (PP (P en) (NP (N
+Italie))))) (PONCT .)) \\
+
+\textbf{Parsing (analyse grammaticale)}
+
+Tâche qui consiste à reconnaître une phrase et à y assigner une structure syntaxique.\\
+
+Applications diverses: correction grammaticale, traduction automatique, question answering.\\
+
+Recherche de l'arbre correct parmi l'ensemble des arbres possibles (cf. treebanks).\\
+
+\textbf{Stratégies de recherche}
+
+"Marie voit un chat."\\
+
+Deux contraintes:
+
+\begin{itemize}
+    \item grammaticale : former une phrase (symbole P)
+    \item lexicale : utiliser les quatre mots dans l'ordre
+\end{itemize}
+
+Deux approches:
+
+\begin{itemize}
+    \item top-down : en partant de l'objectif à atteindre
+    \item bottom-up : en partant des données à utiliser\\
+\end{itemize}
+
+\textbf{Top-down}
+
+On part du symbole de départ P
+
+Règles de réécriture gauche $\rightarrow$ droite
+
+L'analyse réussit si le symbole P couvre une structure qui contient tous les mots de la phrase dans le bon ordre.\\
+
+\textbf{Bottom-up}
+
+On part des mots de la phrase
+
+Règles de réécriture gauche $\leftarrow$ droite
+
+L'analyse réussit si le parser parvient à atteindre le symbole P.\\
+
+
+\textbf{Exploration de l'espace de recherche}
+
+Depth-first : d'abord les nouvelles options (en série).
+
+Breadth-first : d'abord les options existantes (en parallèle).
+
+Même résultat mais chemins différents pour y parvenir.\\
+
+\textbf{Chart parsing}
+
+Basé sur la programmation dynamique
+
+Évite de répéter plusieurs fois une analyse en conservant les sous-arbres en mémoire
+
+Résout partiellement le problème de l'ambiguïté en stockant des arbres parallèles\\
+
+\textbf{Shallow parsing}
+
+Une analyse syntaxique complète peut être assez lourde et prendre un certain temps en raison du nombre d'arbres à générer.
+
+Alternative : analyse partielle en surface
+
+Suffisant pour beaucoup d'applications\\
+
+\textbf{Chunking}
+
+Méthode fréquente de shallow parsing
+
+Identification et classification de constituants dans une structure plate et non-imbriquée
+
+Pas de validation jusqu'au niveau de la phrase
+
+Complexité variable en fonction des besoins\\
+
+\textbf{Structures de traits (features)}
+
+Permettent d'encoder des informations (genre, nombre, personne, temps, mode…) de manière plus flexible qu'avec une grammaire CFG.
+
+"Context-sensitive grammars".\\
