@@ -2,8 +2,7 @@ version: '3'
 
 services:
   latex:
-    build:
-      context: .
-    command: pdflatex -output-directory=/data/${COURSE} ${COURSE}/index.tex
+    image: dxjoke/tectonic-docker
+    command: tectonic -o /usr/src/tex/${COURSE} ${COURSE}/index.tex
     volumes:
-      - ./:/data
+      - ./:/usr/src/tex
