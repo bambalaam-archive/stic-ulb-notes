@@ -1,0 +1,13 @@
+\begin{tikzpicture}
+\coordinate (A) at (-5,0) {};
+\coordinate (B) at ( 5,0) {};
+\coordinate (C) at (0,5) {};
+\draw[name path=AC] (A) -- (C);
+\draw[name path=BC] (B) -- (C);
+\foreach \y/\A in {0/Product Attributes (differentiating),1/Functional Benefits,2/Emotional Benefits,3/Values} {
+    \path[name path=horiz] (A|-0,\y) -- (B|-0,\y);
+    \draw[name intersections={of=AC and horiz,by=P},
+          name intersections={of=BC and horiz,by=Q}] (P) -- (Q)
+        node[midway,above] {\A};
+}
+\end{tikzpicture}
