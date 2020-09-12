@@ -5,7 +5,7 @@ function gen_entries()
 {
     for a in $(ls -d */)
     do
-        echo $a
+        echo ${a::-1}
     done
 }
 

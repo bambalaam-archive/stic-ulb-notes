@@ -3,7 +3,7 @@
 
 \section{Aspects sémantiques}
 
-\textbf{Sémantique}: Dérivé du grec ancien \textgreek{σημαντικός} (sêmantikos) "signifié" \\
+\textbf{Sémantique}: Dérivé du grec ancien "sêmantikos", "signifié" \\
 
 Postulat : le sens d'une expression linguistique peut être capturé par une structure formelle. Comme pour les aspects morpho-lexicaux et syntaxiques, nous utiliserons des langages de représentation sémantique.\\
 
@@ -96,7 +96,7 @@ Aussi utilisé pour encoder une catégorie: Restaurant(Campouce)\\
 
 \textbf{Connecteurs logiques}
 
-"Je n'ai que 5€ \textbf{et} pas beaucoup de temps."
+"Je n'ai que 5\euro \ \textbf{et} pas beaucoup de temps."
 
 $ \text{Avoir(Locuteur, CinqEuros)} \land \neg \text{Avoir(Locuteur, BeaucoupDeTemps)}$ \\
 
@@ -118,17 +118,17 @@ $ \forall x: \text{Pizzeria(x)} \rightarrow \text{Servir(x, Pizzas)} $ \\
 
 \textbf{Exercices}
 
-« Le Gauguin est un bar » : $$Bar(\text{"Gauguin"})$$
+"Le Gauguin est un bar" : $$Bar(\text{"Gauguin"})$$
 
-« Le Snack 44 sert des sandwiches » : $$Servir(\text{"Snack 44"}, Sandwiches)$$
+"Le Snack 44 sert des sandwiches" : $$Servir(\text{"Snack 44"}, Sandwiches)$$
 
-« Je veux manger en terrasse, ou alors pas cher » : $$Vouloir(Locuteur, x) \land Restaurant(x) \land ( Avoir(x, Terrasse) \lor \neg Etre(x, Cher) )$$
+"Je veux manger en terrasse, ou alors pas cher" : $$Vouloir(Locuteur, x) \land Restaurant(x) \land ( Avoir(x, Terrasse) \lor \neg Etre(x, Cher) )$$
 
-« J'aime les restos italiens et japonais » : $$Restaurant(x, Italien) \lor Restaurant(x, Japonais)$$
+"J'aime les restos italiens et japonais" : $$Restaurant(x, Italien) \lor Restaurant(x, Japonais)$$
 
-« Peut-on trouver un restaurant végétarien à Ixelles ? » : $$ \exists x: Restaurant(x) \land Type(x, Vegetarien) \land CodePostal(x, 1050) $$
+"Peut-on trouver un restaurant végétarien à Ixelles ?" : $$ \exists x: Restaurant(x) \land Type(x, Vegetarien) \land CodePostal(x, 1050) $$
 
-« Les cafés du Cimetière sont proches de l'ULB » : $$ \forall x Cafe(x) : Proche(x, \text{"Cimetiere d'Ixelles"}) \rightarrow Distance(x, \text{"ULB"}) < 5km $$
+"Les cafés du Cimetière sont proches de l'ULB" : $$ \forall x Cafe(x) : Proche(x, \text{"Cimetiere d'Ixelles"}) \rightarrow Distance(x, \text{"ULB"}) < 5km $$
 
 \newpage
 
@@ -185,7 +185,7 @@ Sous-discipline majeure du TAL au vu des enjeux liés à la désambiguïsation s
 
 Exemple:
 \begin{itemize}
-    \item Traduction automatique (avocat → avocado/lawyer)
+    \item Traduction automatique (avocat $\rightarrow$ avocado/lawyer)
     \item Recherche d'information en ligne (jaguar vs Jaguar)
     \item Synthèse vocale (signe des temps vs cygne d'étang)\\
 \end{itemize}

@@ -105,7 +105,7 @@ Objectif: déterminer le score de fluidité de la langue cible P(T).
 
 Modèle de langue N-grammes - séquences de N mots. Il faut trouver un compromis: N-gramme trop petit $\rightarrow$ pas hyper représentatif de la langue; N-gramme trop grand $\rightarrow$ la probabilité de trouver cette chaine dans le corpus est plus petite. On dépasse rarement 6-gramme dans l'état de l'art actuel.
 
-Entrainement: Prend le corpus monolingue, extrait tous les N-grammes et calcule leur probabilité dans le corpus monolingue, c’est-à-dire leur fréquence dans le corpus. \\
+Entrainement: Prend le corpus monolingue, extrait tous les N-grammes et calcule leur probabilité dans le corpus monolingue, c'est-à-dire leur fréquence dans le corpus. \\
 
 Probabilité d'un Bi-gramme: $ \frac{ \text{Freq(1er mot, 2eme mot)}}{\text{Freq(1er mot)}} $ \\
 
@@ -121,7 +121,7 @@ Score de traduction: Nombre de fois où le segment source et cible sont extraits
 
 \textbf{Modèle de réordonnancement}
 
-On calcule aussi la probabilité qu’un segment change de place, ce qui permet de traiter des changements d’ordre des mots. Exemple: a good man $\rightarrow$ un homme honnête\\
+On calcule aussi la probabilité qu'un segment change de place, ce qui permet de traiter des changements d'ordre des mots. Exemple: a good man $\rightarrow$ un homme honnête\\
 
 \textbf{Décodage}
 
@@ -139,7 +139,7 @@ On calcule aussi la probabilité qu’un segment change de place, ce qui permet 
     \item Gros corpus nécessaires: monolingues et bilingues
     \item Traduisent par segments: Contexte limité à 5-6 mots
     \item Fautes non locales
-    \item Ne généralisent pas : si le mot est absent du corpus, il n’est pas traduit\\
+    \item Ne généralisent pas : si le mot est absent du corpus, il n'est pas traduit\\
 \end{itemize}
 
 
