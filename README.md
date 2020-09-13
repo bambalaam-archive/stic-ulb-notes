@@ -6,16 +6,20 @@ This repository holds my notes (in French, sorry 🤷 ) for courses at
 
 ## How to use
 
-There are two (and a half) ways to use this repository:
+There are three ways to use this repository:
 
-### Normal
+### Docker + Rofi
 
-```
-cd <your desired class directory>
-pdflatex index.tex
-```
+If you're a cool person and you use Rofi, executing `./courses_script.sh`
+allows you to do many fancy things:
 
-### Docker
+- Pick and choose the course directory, instead of editing the `.env` file
+- Open the active course in Sublime Text, a terminal, and the resulting PDF (TODO: make editor, terminal emulator and others configurable)
+- Create new lecture in the active course (this creates a new file in the `/lectures` directory and auto-adds it to the `index.tex` file of the course)
+
+![Rofi example](https://i.imgur.com/BsAvmOe.png)
+
+### Simply Docker
 
 - Edit the `.env` file to pick which course you're currently working on
 
@@ -29,13 +33,12 @@ COURSE=<your desired class directory>
 docker-compose up
 ```
 
-### Bonus: Docker + Rofi
+### Normal
 
-If you're a cool person and you use Rofi, executing `./choose_course.sh`
-allows you to pick and choose the course directory, instead of editing the
-`.env` file.
-
-![Rofi example](https://i.imgur.com/ytph7bR.png)
+```
+cd <your desired class directory>
+pdflatex index.tex
+```
 
 ## Credit
 
