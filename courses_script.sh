@@ -86,11 +86,11 @@ ACTIVE_COURSE=$(grep COURSE ~/stic/.env | xargs)
 ACTIVE_COURSE=${ACTIVE_COURSE#*=}
 
 # Call main menu
-SEL=$( menu | rofi -dmenu -p "Select option: " -a 0 -no-custom  | awk '{print $1}' )
+SEL=$( menu | rofi -dmenu -i -p "Select option: " -a 0 -no-custom  | awk '{print $1}' )
 
 if [ "$SEL" == "1)" ]; then
     # Call courses menu
-    COURSE=$( course_entries | rofi -dmenu -p "Select course: " -a 0 -no-custom  | awk '{print $1}' )
+    COURSE=$( course_entries | rofi -dmenu -i -p "Select course: " -a 0 -no-custom  | awk '{print $1}' )
     # Avoid setting empty value in the .env file when pressing ESC
     if [ ! -z "$COURSE" ]; then
         echo "COURSE=${COURSE}" > ~/stic/.env
@@ -108,7 +108,7 @@ elif [ "$SEL" == "2)" ]; then
 elif [ "$SEL" == "3)" ]; then
     check_active_course
     # Call date picker menu
-    DATE_SEL=$( date_picker | rofi -dmenu -p "Select date: " -a 0 -no-custom  | awk '{print $1}' )
+    DATE_SEL=$( date_picker | rofi -dmenu -i -p "Select date: " -a 0 -no-custom  | awk '{print $1}' )
     if [ "$DATE_SEL" == "1)" ]; then
         DATE=$(date +%F)
     elif [[ "$DATE_SEL" == "2)" ]]; then
