@@ -1,0 +1,75 @@
+\lecture{02}{2020-10-13}
+\vspace{-1.2cm}
+
+\section{Collecte de données}
+
+\subsection{Corpus}
+
+\epigraph{In linguistics, a corpus (plural corpora) or text corpus is a large and structured\\ set of texts (nowadays usually electronically stored and processed).}{\textit{Wikipedia}}
+
+De nombreux corpus ont déjà été constitués, il faut donc veiller à vérifier ce qui existe avant d'envisager d'en constituer un nouveau.
+Ils sont souvent crées pour une tâche en particulier (traduction automatique, sentiment analysis...).\\
+
+Exemples de corpus célèbres:\\
+\begin{itemize}
+    \item \textbf{Brown:} 500 textes issus d'ouvrages publiés aux USA. Environ 1 million de mots dans 15 catégories, avec des PoS tags.
+    \item \textbf{Reuters:} Collection de 10.788 documents du département financier de Reuters (1998). Corpus pour la classification de textes. 1,7 millions de mots, 90 catégories.
+    \item \textbf{20 Newsgroups:} 20.000 documents dans 20 groupes (1995)
+    \item \textbf{Europarl:} Compilé par Philipp Koehn (Université d'Édimbourg) en 2005, puis enrichi en 2012. 21 langues, 60 millions de mots par langue.
+    Ressource historiquement incontournable pour la traduction automatique statistique, mais moins pertinente depuis l'apparition des approches neuronales.
+\end{itemize}
+
+\subsection{Numérisation}
+
+La numérisation est un processus complexe qui va bien au-delà de la simple conversion d'un document en binaire.
+Il y a plusieurs étapes de préparation, la tâche de numérisation elle même, la création de métadonnées, puis enfin la gestion des collections numérisées.
+La tâche de numérisation peut être extrêmement longue et propice à des erreurs, par exemple:
+des pages manquantes, de reliures trop étroites (texte courbé ou perdu), formats de documents qui changent, erreurs de dates, etc.\\
+
+Il faut aussi se poser plusieurs questions:\\
+\begin{itemize}
+    \item Sélection à effectuer? Sur quels critères ?
+    \item Quelle résolution ? Rapidité vs qualité d'image
+    \item Stockage
+    \item Description (métadonnées)
+    \item Coût
+    \item In-house vs Outsourcing\\
+\end{itemize}
+
+Une large partie du patrimoine de l'humanité reste insaisissable par le biais des technologies, car il est non numérisé,
+il manque de métadonnées et/ou est restreint par des droits d'auteur ou droits à la vie privée.\\
+
+Il est possible d'automatiser certaines étapes, notamment celle de la création des métadonnées
+(exemple: OCR, Optical Character Recognition, qui permet la recherche full-text dans un document numérisé).\\
+
+Les coûts de création ont fortement diminué, mais la qualité des métadonnées également.
+Il est donc très important de paramétrer les algorithmes d'OCR.\\
+
+\subsection{Constitution de corpus}
+
+Différentes méthodes peuvent être utilisées pour récupérer des données publiées en ligne.
+Il faut choisir une technique, ou les combiner, en fonction des possibilités offertes.\\
+
+\textbf{Requêtes SQL}
+
+Rapides et précises en cas d'accès (même read-only) à une base de données relationnelle.
+Même syntaxe (de base) pour de nombreux types de bases de données.
+Malheureusement, en pratique, il est très rare d'obtenir un tel accès car les DB sont protégées par des règles de sécurité très strictes (password, firewall...)\\
+
+\textbf{Requêtes SPARQL}
+
+Calquées sur le SQL mais pour interroger des bases de connaissances ouvertes en RDF.\\
+
+\textbf{APIs}
+
+Compromis entre les requêtes structurées et le scraping pur et simple.
+Des interfaces permettant d'utiliser le protocole HTTP pour envoyer des requêtes GET ou POST.
+Parfois soumises à des quotas ou clés d'API.\\
+
+\textbf{Web scraping}
+
+Aspiration d'un site web pour en garder une copie statique (figée) et locale (hors-ligne).
+Zone grise légale, mal vu des webmasters.
+Il est composé de deux étapes: le crawling (page seed et parcours des liens) et le scraping (sauvegarde des données sur les pages).
+Exemple d'outil en Python: Scrapy.
+Pour les bulletins communaux, seule méthode possible car pas de DB, SPARQL endpoint ou d'API.
