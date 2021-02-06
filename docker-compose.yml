@@ -5,4 +5,5 @@ services:
     image: dxjoke/tectonic-docker
     command: tectonic -o /usr/src/tex/${COURSE} ${COURSE}/index.tex
     volumes:
-      - ./:/usr/src/tex
+      - ./${COURSE}:/usr/src/tex/${COURSE}
+      - ./preamble.tex:/usr/src/tex/preamble.tex
