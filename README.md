@@ -44,4 +44,4 @@ pdflatex index.tex
 
 The LaTeX structure (preamble, headers, `lecture` command, and others) are
 largely inspired by [Gilles Castel's](https://github.com/gillescastel)
-blogpost ["How I manage my LaTeX lecture notes"](https://castel.dev/post/lecture-notes-3/)
+blogpost ["How I manage my LaTeX lecture notes"](https://castel.dev/post/lecture-notes-3/). May he Rest In Peace.
